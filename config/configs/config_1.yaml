@@ -1,0 +1,52 @@
+calibration:
+  num_points: {7x7: 49, 9x9: 81, lego: 49}
+filter:
+  attenuation: 200
+  cutoff_freq: 1e-05
+  freqs: {coil1: 20000, coil2: 22000, coil3: 24000, coil4: 26000, coil5: 28000, coil6: 30000,
+    coil7: 32000, coil8: 34000}
+  num_freqs: 8
+  num_samples: {1: 5000, 2: 4000, 3: 1000, 4: 500}
+  passdc: true
+  sampling_freq: 100000
+  scale: true
+  window_type: chebwin
+model:
+  centers_x: [-93.543, 0, 93.543, -68.55, 68.55, -93.543, 0, 93.543]
+  centers_y: [93.543, 68.55, 93.543, 0, 0, -93.543, -68.55, -93.543]
+  model_name: square_model
+  num_coils: 8
+  num_turns: 25
+  trace_length: 0.07
+  trace_spacing: 0.00025
+  trace_thickness: 0.0016
+  trace_width: 0.0005
+pinmap:
+  anser: {0: 4, 1: 0, 2: 8, 3: 1, 4: 9, 5: 2, 6: 10, 7: 11, 8: 3, 9: 8, 10: 12, 11: 13,
+    12: 5, 13: 14, 14: 6, 15: 15, 16: 7}
+  duplo: {0: 0, 1: 1, 2: 4}
+solver:
+  bounds_max: [0.5, 0.5, 0.5, 3.14159265359, 9.42477796077]
+  bounds_min: [-0.5, -0.5, 0.0, -3.14159265359, -9.42477796077]
+  ftol: 2.3e-16
+  gtol: 2.3e-16
+  initial_cond: [0.0, 0.0, 0.2, 3.14159265359, 0]
+  jacobian: 2-point
+  method: trf
+  verbosity: 0
+  xtol: 1e-06
+system:
+  channels: [1, 3]
+  device_cal: 7x7
+  device_name: Dev1
+  device_type: nidaq
+  flip_enable: false
+  flip_list: null
+  igt: false
+  igt_local: true
+  igt_port: 18944
+  print: false
+  serial_name: COM1
+  speed: 1
+  system_version: anser
+  update_delay: 0.001

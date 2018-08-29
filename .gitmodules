@@ -1,0 +1,4 @@
+[submodule "python-anser"]
+	path = python-anser
+	url = https://github.com/AlexJaeger/python-anser.git
+	branch = qt
