@@ -1,3 +1,4 @@
+'''Starts tracking and displays system info'''
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSignal, pyqtSlot
 from app.gui.QtUI.systemwidget import Ui_systemwidget

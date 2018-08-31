@@ -1,3 +1,4 @@
+'''Starts calibration and creates/removes sensors'''
 from PyQt5.QtWidgets import QSplitter, QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
 from app.gui.panels.calibrationpanel import CalibrationPanel

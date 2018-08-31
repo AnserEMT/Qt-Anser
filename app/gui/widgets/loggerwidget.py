@@ -1,3 +1,4 @@
+'''Logs debug information'''
 from PyQt5.QtWidgets import QPlainTextEdit
 import logging
 

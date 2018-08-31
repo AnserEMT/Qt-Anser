@@ -1,3 +1,4 @@
+'''Displays sensor positions in real time'''
 import pyqtgraph.opengl as gl
 import numpy as np
 from stl import mesh

@@ -1,3 +1,4 @@
+'''Starts calibration and creates/removes sensors'''
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSignal, pyqtSlot
 from app.gui.QtUI.calibrationwidget import Ui_calibrationwidget

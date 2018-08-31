@@ -1,3 +1,4 @@
+'''Represents the field generator board used during calibration'''
 from pyqtgraph import GraphicsView, GraphItem, TextItem, ViewBox
 from PyQt5.QtCore import Qt, pyqtSlot
 import numpy as np
@@ -5,7 +6,7 @@ import numpy as np
 
 class GridGraph(GraphicsView):
     '''
-    A virtual representation of the field generator board used during calibration.
+    A virtual representation of the *field generator board* used during calibration.
     '''
     def __init__(self):
         super().__init__()
@@ -18,6 +19,9 @@ class GridGraph(GraphicsView):
 
 
 class GridItem(GraphItem):
+    '''
+    Subclass of GridGraph
+    '''
     def __init__(self):
         self.x = 7
         self.y = 7

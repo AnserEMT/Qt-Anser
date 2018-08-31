@@ -1,3 +1,4 @@
+'''Creates an OpenIGTLink server'''
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from app.gui.QtUI.igtwidget import Ui_igtwidget

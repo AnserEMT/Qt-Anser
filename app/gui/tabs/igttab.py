@@ -1,3 +1,4 @@
+'''3D Visualisation and OpenIGTLink'''
 from PyQt5.QtWidgets import QSplitter, QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
 from app.gui.graphs.positiongraph import PositionGraph

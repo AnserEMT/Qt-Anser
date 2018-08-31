@@ -1,28 +1,27 @@
+'''The primary window and user interface for the application'''
 from PyQt5.QtWidgets import QMainWindow, QLabel, QDockWidget, QMenu, QAction
 from PyQt5.QtCore import Qt, pyqtSlot
 import qdarkstyle
 from scipy import *
 import logging
 from app.gui.widgets.loggerwidget import LoggerWidget
-from app.gui.widgets.tabWidget import TabWidget
+from app.gui.widgets.tabwidget import TabWidget
 import app.utilities.guiutils as guiutils
 
 
 class MainWindow(QMainWindow):
-    '''
-    The primary window and user interface for the application.
+    ''' The primary window and user interface for the application.
     It contains:
-        four tabs - Visualisation, Tracking, Calibration, Settings
-        Status Bar - displays important system information
-        Logger - logs debug information for troubleshooting
-        Controller - to invoke EMT system functions
-
+        | four tabs - Visualisation, Tracking, Calibration, Settings
+        | Status Bar - displays important system information
+        | Logger - logs debug information for troubleshooting
+        | Controller - to invoke EMT system functions
     '''
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUI()
         defaultConfig = guiutils.get_settings_default_config()
-        self.setStatusBarDefaultConfig(defaultConfig)
+        self.setStatusbarDefaultConfig(defaultConfig)
 
     def setupUI(self):
         self.statusBar().addPermanentWidget(QLabel('Default Config: '))
@@ -36,12 +35,12 @@ class MainWindow(QMainWindow):
 
         self.statusBar().addPermanentWidget(QLabel('System Status: '))
         self.statusBarSystemLED = QLabel('')
-        self.setStatusBarSystemLED(False)
+        self.setStatusbarSystemLED(False)
         self.statusBar().addPermanentWidget(self.statusBarSystemLED)
         self.statusBar().addPermanentWidget(QLabel('      '))
         self.statusBar().addPermanentWidget(QLabel('Server Status: '))
         self.statusBarServerLED = QLabel('')
-        self.setStatusBarLED(False)
+        self.setStatusbarServerLED(False)
         self.statusBar().addPermanentWidget(self.statusBarServerLED)
 
         self.dockableWidget = QDockWidget("Logger", self)
@@ -85,10 +84,6 @@ class MainWindow(QMainWindow):
         self.setGeometry(50, 50, 1000, 1000)
         self.setWindowTitle("Anser")
 
-
-    '''----------------------------------------------------------------------------'''
-    '''------------------------------UI FUNCTIONS-----------------------------------'''
-    '''----------------------------------------------------------------------------'''
     @pyqtSlot()
     def changeTheme(self):
         dark_stylesheet = qdarkstyle.load_stylesheet_pyqt5()
@@ -101,44 +96,47 @@ class MainWindow(QMainWindow):
     def changeFullScreen(self):
         self.showNormal() if self.isFullScreen() else self.showFullScreen()
 
+    @pyqtSlot(object)
+    def notificationHanlder(self, notification):
+        self.setStatusbarSystemLEDByID(notification.status)
+        self.setStatusbarMessage(notification.message)
+        self.systemPanel.setCoilLEDsByID(notification.coils)
+        # print('notification' + str(time.time()))
+
+
     @pyqtSlot(str)
-    def setStatusBarMessage(self, message):
+    def changeDefaultConfig(self, file):
+        if guiutils.set_settings_default_config(file):
+            self.setStatusbarDefaultConfig(file)
+            logging.info('Default configuration file has been changed: {}'.format(file))
+
+    @pyqtSlot(str)
+    def setStatusbarMessage(self, message):
         self.statusBar().clearMessage()
         message = 'STATUS: {}'.format(message)
         self.statusBar().showMessage(message)
 
     @pyqtSlot(bool)
-    def setStatusBarSystemLED(self, status):
+    def setStatusbarSystemLED(self, status):
         self.statusBarSystemLED.setPixmap(guiutils.get_status_pixmap(status))
 
     @pyqtSlot(object)
-    def setStatusBarSystemLEDByID(self, statusID):
+    def setStatusbarSystemLEDByID(self, statusID):
         self.statusBarSystemLED.setPixmap(guiutils.get_status_pixmap_by_ID(statusID))
 
     @pyqtSlot(bool)
-    def setStatusBarLED(self, status):
+    def setStatusbarServerLED(self, status):
         self.statusBarServerLED.setPixmap(guiutils.get_status_pixmap(status))
 
-    def setStatusBarDefaultConfig(self, file):
+    def setStatusbarDefaultConfig(self, file):
         self.statusBarDefaultConfigLabel.setText(file)
 
     @pyqtSlot(str)
-    def setStatusBarMode(self, mode):
+    def setStatusbarMode(self, mode):
         self.statusBarModeLabel.setText(mode)
-
-    @pyqtSlot(object)
-    def notificationHanlder(self, notification):
-        self.setStatusBarSystemLEDByID(notification.status)
-        self.setStatusBarMessage(notification.message)
-        self.systemPanel.setCoilLEDsByID(notification.coils)
-        #print('notification' + str(time.time()))
 
     @pyqtSlot()
     def closeApplication(self):
         sys.exit()
 
-    @pyqtSlot(str)
-    def changeDefaultConfig(self, file):
-        if guiutils.set_settings_default_config(file):
-            self.setStatusBarDefaultConfig(file)
-            logging.info('Default configuration file has been changed: {}'.format(file))
+

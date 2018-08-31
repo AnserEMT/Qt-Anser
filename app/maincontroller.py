@@ -1,9 +1,16 @@
+'''Connects the UI to the Anser system'''
 from PyQt5.QtCore import Qt, pyqtSlot, QObject
 
-
 class MainController(QObject):
-    ''' The controller for the application, responsible for connecting the GUI and the EMT system. (View<->System)'''
+    ''' The controller is responsible for the control flow of the application.
+        It acts as the glue of the application by connecting the GUI to the Anser (EMT) system.
+        It delegates UI events to the appropriate Anser (EMT) function, vice versa.
+    '''
     def __init__(self, view, system):
+        '''
+        :param view: :mod:`~app.mainwindow` instance (representing the UI)
+        :param system: :mod:`~app.qtanser` instance (representing the Anser System)
+        '''
         super(MainController, self).__init__()
         self.view = view
         self.system = system
@@ -17,11 +24,11 @@ class MainController(QObject):
         self.configEditor = self.view.tb.developertab
 
         # SYSTEM EVENTS
-        self.system.SYS_EVENT_MODE_CHANGED.connect(self.view.setStatusBarMode)
+        self.system.SYS_EVENT_MODE_CHANGED.connect(self.view.setStatusbarMode)
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.systemPanel.setSystemInfo)
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.fftGraph.populateCombo)
 
-        self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.view.setStatusBarSystemLED)
+        self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.view.setStatusbarSystemLED)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.systemPanel.setAllCoilLEDs)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.fftGraph.clearGraph)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.positionGraph.clearGraph)
@@ -30,7 +37,7 @@ class MainController(QObject):
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.gridGraph.resetGraph)
 
         self.system.SYS_EVENT_SERVER_STATUS.connect(self.igtPanel.setStatus)
-        self.system.SYS_EVENT_SERVER_STATUS.connect(self.view.setStatusBarLED)
+        self.system.SYS_EVENT_SERVER_STATUS.connect(self.view.setStatusbarServerLED)
 
         self.system.SYS_EVENT_SENSORS_CHANGED.connect(self.calibrationPanel.populateCombosWithSensors)
         self.system.SYS_EVENT_SENSORS_CHANGED.connect(self.systemPanel.populateCombos)

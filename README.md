@@ -1,4 +1,4 @@
-# Anser Quick Start Guide
+# Anser Installation
 ## Types of applications:
 
 There are two ways to use the Anser (EMT) System. Using  our command line tools or graphical user interface.
@@ -23,13 +23,13 @@ communication protocol) to transfer sensor positions among devices and other sof
 The Logger logs debug information, this is useful for troubleshooting. The status bar displays important system status information and notifications.
 - **Status Notifications**: indicate the current status of the EMT system and help to detect faults.
 
-	|    Notification                               |Action                                                                       |
-	|-----------------------------------------------|-----------------------------------------------------------------------------|
-	|*‘OK’* |System is functioning properly.        |                                                                             |
-	| *'Power is OFF’*                              |Press the power button at the rear of the base station.                      |
-	|*‘(USB-B) MCU is not connected’*               |Connect Windows PC to the MCU port using a USB A-B cable.                    |
-	| *‘(USB-B) DAQ is not connected’*              |Connect Windows PC to DAQ port using a USB A-B cable.                        |
-	| *‘(USB-B) Field Generator is not connected’*  |Connect field generator board to the base station using the centronics cable.|
+|    Notification                               |Action                                                                       |
+|-----------------------------------------------|-----------------------------------------------------------------------------|
+|*‘OK’*        									|System is functioning properly.  											  |
+|*'Power is OFF’*                               |Press the power button at the rear of the base station.                      |
+|*‘(USB-B) MCU is not connected’*               |Connect Windows PC to the MCU port using a USB A-B cable.                    |
+|*‘(USB-B) DAQ is not connected’*               |Connect Windows PC to DAQ port using a USB A-B cable.                        |
+|*‘(USB-B) Field Generator is not connected’*   |Connect field generator board to the base station using the centronics cable.|
 
 
 - **Default Config**: the current configuration file being used by the system. Configuration files store the settings necessary to initialise the system such as frequencies, system speed etc.

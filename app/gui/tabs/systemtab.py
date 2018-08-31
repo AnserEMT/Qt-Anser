@@ -1,3 +1,4 @@
+'''Starts tracking and displays system info'''
 from PyQt5.QtWidgets import QWidget, QSplitter, QVBoxLayout
 from PyQt5.QtCore import Qt
 from app.gui.graphs.fftgraph import FFTGraph

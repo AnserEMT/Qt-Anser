@@ -1,3 +1,4 @@
+'''Shows the frequencies emitted by the field generator in real time'''
 import pyqtgraph as pg
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -9,7 +10,7 @@ import sys
 class FFTGraph(QWidget):
     '''
     Represents the frequencies emitted by the field generator.
-    A fast fourier transform is applied to the samples acquired from the data acquisition device.
+    A *fast fourier transform* is applied to the samples acquired from the data acquisition device.
     This is a useful debugging tool.
     '''
     def __init__(self):
