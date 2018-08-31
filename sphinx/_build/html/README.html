@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Anser Installation &mdash; Qt-Anser alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Download" href="download.html" />
+    <link rel="prev" title="Documentation" href="summary.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qt-Anser
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Anser Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-applications">Types of applications:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anser-application-overview">Anser Application: Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tabs">Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-bar-logger">Status bar &amp; Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#anser-application-quick-startup-guide">Anser Application: Quick Startup Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-configuration">STEP 1: Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-add-sensor">STEP 2: Add Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-calibration">STEP 3: Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-tracking">STEP 4: Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-visualisation-openigtlink">STEP 5: Visualisation &amp; OpenIGTLink</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#inventory">Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-setup">Hardware Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qt-Anser</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Anser Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="anser-installation">
+<span id="anser-installation"></span><h1>Anser Installation<a class="headerlink" href="#anser-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="types-of-applications">
+<span id="types-of-applications"></span><h2>Types of applications:<a class="headerlink" href="#types-of-applications" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to use the Anser (EMT) System. Using  our command line tools or graphical user interface.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Application  Type</th>
+<th>Supported Operating Systems</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anser Command Line Tools (CLI)</td>
+<td>Windows, Linux and Mac</td>
+</tr>
+<tr>
+<td>Anser Application (GUI)</td>
+<td>Windows</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="anser-application-overview">
+<span id="anser-application-overview"></span><h2>Anser Application: Overview<a class="headerlink" href="#anser-application-overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tabs">
+<span id="tabs"></span><h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h3>
+<p>The application consists of 4 Tabs:</p>
+<ol class="simple">
+<li><strong>Server Tab</strong> – 3D visualisation to display tracking information. OpenIGTLink (network
+communication protocol) to transfer sensor positions among devices and other software packages.</li>
+<li><strong>Tracking Tab</strong> – to initialise tracking and display system status information. The field generator frequency graph is a useful debugging tool that shows the frequencies emitted by the field generator in real time.</li>
+<li><strong>Calibration Tab</strong> – to create or remove sensors files, and calibrate the system.</li>
+<li><strong>Developer Tab</strong> – to configure the system and change settings such as emitter frequencies, system speed etc.</li>
+</ol>
+</div>
+<div class="section" id="status-bar-logger">
+<span id="status-bar-logger"></span><h3>Status bar &amp; Logger<a class="headerlink" href="#status-bar-logger" title="Permalink to this headline">¶</a></h3>
+<p>The Logger logs debug information, this is useful for troubleshooting. The status bar displays important system status information and notifications.</p>
+<ul class="simple">
+<li><strong>Status Notifications</strong>: indicate the current status of the EMT system and help to detect faults.</li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Notification</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>‘OK’</em></td>
+<td>System is functioning properly.</td>
+</tr>
+<tr>
+<td><em>'Power is OFF’</em></td>
+<td>Press the power button at the rear of the base station.</td>
+</tr>
+<tr>
+<td><em>‘(USB-B) MCU is not connected’</em></td>
+<td>Connect Windows PC to the MCU port using a USB A-B cable.</td>
+</tr>
+<tr>
+<td><em>‘(USB-B) DAQ is not connected’</em></td>
+<td>Connect Windows PC to DAQ port using a USB A-B cable.</td>
+</tr>
+<tr>
+<td><em>‘(USB-B) Field Generator is not connected’</em></td>
+<td>Connect field generator board to the base station using the centronics cable.</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><strong>Default Config</strong>: the current configuration file being used by the system. Configuration files store the settings necessary to initialise the system such as frequencies, system speed etc.</li>
+<li><strong>Mode</strong>: the Anser application has 3 modes - <em>IDLE</em>, <em>TRK</em> (tracking) and <em>CAL</em> (calibrating).</li>
+<li><strong>System LED</strong>: indicates the current status of the system:<ul>
+<li>Green – system is on and connected to computer</li>
+<li>Orange – system is not fully setup</li>
+<li>Grey – System is not connected to computer</li>
+</ul>
+</li>
+<li><strong>Server LED</strong>: indicates whether the server is active.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="anser-application-quick-startup-guide">
+<span id="anser-application-quick-startup-guide"></span><h2>Anser Application: Quick Startup Guide<a class="headerlink" href="#anser-application-quick-startup-guide" title="Permalink to this headline">¶</a></h2>
+<p>Launch the Anser application and ensure the system is properly setup (see <em>Hardware Setup</em>).</p>
+<blockquote>
+<div>Note: The executable for the Anser (GUI) application is located in <strong>app.zip</strong>. <em>Windows is currrently only supported.</em> However, if working with linux or mac, you may use our command line tools . (See master branch)</div></blockquote>
+<div class="section" id="step-1-configuration">
+<span id="step-1-configuration"></span><h3>STEP 1: Configuration<a class="headerlink" href="#step-1-configuration" title="Permalink to this headline">¶</a></h3>
+<p>To configure the system initially, go to → DEVELOPER TAB</p>
+<ul class="simple">
+<li>Select the provided configuration file from the dropdown menu, and click the <strong>‘Make Default’</strong> button. This ensures the application knows what settings to use on startup.</li>
+<li>Using the file viewer, scroll down through the configuration file and under ‘system’ change the ‘device_name’ to your DevX identifier (see <em>Hardware Setup</em>). Click the <strong>‘Apply Changes’</strong> button.</li>
+</ul>
+</div>
+<div class="section" id="step-2-add-sensor">
+<span id="step-2-add-sensor"></span><h3>STEP 2: Add Sensor<a class="headerlink" href="#step-2-add-sensor" title="Permalink to this headline">¶</a></h3>
+<p>Go to → CALIBRATION TAB
+To add a sensor,</p>
+<ul class="simple">
+<li>Under ‘Add Sensor’, type in a name, description and select a 5 or 6 DOF (degrees of freedom) Click <strong>‘Add’.</strong> Note: 6 DOF is currently unsupported.</li>
+</ul>
+<p>To remove a sensor,</p>
+<ul class="simple">
+<li>Under ‘Remove Sensor’, select the sensor from the dropdown menu. Click <strong>‘Remove’</strong>.</li>
+</ul>
+</div>
+<div class="section" id="step-3-calibration">
+<span id="step-3-calibration"></span><h3>STEP 3: Calibration<a class="headerlink" href="#step-3-calibration" title="Permalink to this headline">¶</a></h3>
+<p>Calibration of the EM tracking system is the process of fitting the magnetic field model of the field generator to the sensor. This involves gathering 49 (7x7) test positions located on the field generator. It is important to note that calibration is not only specific to each sensor but each sensor→ port connection i.e calibration does not hold for all ports. Thus, before calibration you must select a sensor and the port it is connected to. Calibration data is stored in individual sensor files, so multiple sensors can be use the same port interchangeably. We recommend using only the first 4 ports.</p>
+<p>To calibrate, Go to → CALIBRATION TAB</p>
+<ul>
+<li><p class="first">Under ‘Setup’, select your sensor from the dropdown menu and the port it is connected to. Click <strong>‘Start’</strong> to begin the calibration process.</p>
+<blockquote>
+<div><p><strong>Note:</strong> Look at the status bar, ensure the system status LED is green and you receive an ‘OK’ status notification. If not resolve the specified issue and restart calibration by repressing <strong>‘Start’</strong>.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Under ‘Status’ you will be prompted for Point 1. Fully insert the sensor probe into the field generator at Point 1, you can use the virtual field generator board for reference and press <strong>‘Point Capture’</strong>. A field measurement will be taken and you will be then prompted for Point 2. Continue to acquire all points.</p>
+<blockquote>
+<div><p><strong>Note:</strong> After capturing the first point, you may use the ENTER Key (↵) for subsequent captures.</p>
+</div></blockquote>
+</li>
+<li><p class="first">When all points have been captured, the <strong>‘Calibrate’</strong> button becomes enabled. Click <strong>‘Calibrate’</strong>. Wait for the virtual field generator board to reset to its default red colour.
+The color coding scheme for the virtual field generator board is as follows:</p>
+<ul class="simple">
+<li>Green Colour – Point has been captured</li>
+<li>Red Colour – Point has not yet been captured</li>
+<li>Blue Colour – Next point to be captured</li>
+<li>Purple – Calibrating</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="step-4-tracking">
+<span id="step-4-tracking"></span><h3>STEP 4: Tracking<a class="headerlink" href="#step-4-tracking" title="Permalink to this headline">¶</a></h3>
+<p>Tracking is only possible after calibrating the system with your sensor.
+To begin tracking Go to → TRACKING TAB</p>
+<ul>
+<li><p class="first">Under ‘tracking’, select your sensor and the port number it is connected to. Select your preferred speed using the slider. Click <strong>‘Start’.</strong></p>
+<blockquote>
+<div><p><strong>Note:</strong> Look at the status bar, ensure the system status LED is green and you receive an ‘OK’ status notification. If not resolve the specified issue and restart tracking by repressing <strong>‘Start’.</strong></p>
+</div></blockquote>
+</li>
+<li><p class="first">The <strong>Field Generator Frequency Graph</strong> should show <strong>8 peaks</strong> at different frequencies between <em>20,000hz</em> and <em>50,000hz</em> (corresponding to the frequencies emitted by the 8 coils on the field generator).</p>
+</li>
+<li><p class="first">The ‘System Status’ section shows the status of each coil and its corresponding frequency. It also displays the current sampling frequency, sample size and active ports.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="step-5-visualisation-openigtlink">
+<span id="step-5-visualisation-openigtlink"></span><h3>STEP 5: Visualisation &amp; OpenIGTLink<a class="headerlink" href="#step-5-visualisation-openigtlink" title="Permalink to this headline">¶</a></h3>
+<p>Once, tracking has started, go to → SERVER TAB</p>
+<ul class="simple">
+<li>Ensure the sensors are responsive and functioning properly by referring to the 3D visualisation kit. Each sensor is represented by a <em>small red sphere</em>.</li>
+</ul>
+<p>To use Openigtlink, go the → SERVER TAB</p>
+<ul class="simple">
+<li>Under ‘Openigtlink’, select localhost and enter your preferred port (default is <em>18944</em>). Click <strong>‘Connect’</strong> to host a server and transfer sensor position</li>
+</ul>
+</div>
+</div>
+<div class="section" id="inventory">
+<span id="inventory"></span><h2>Inventory<a class="headerlink" href="#inventory" title="Permalink to this headline">¶</a></h2>
+<p>The following <em>components</em> are required for using the Anser EMT system.</p>
+<p>Hardware:</p>
+<ul class="simple">
+<li>1 x Barrel jack power supply 15V</li>
+<li>1 x Anser EMT base station</li>
+<li>1 x Anser EMT field generator</li>
+<li>1 x Sensor probe (More may be supplied)</li>
+<li>1 x 3M centronics cable</li>
+<li>2 x USB A-B cable</li>
+</ul>
+<p>Software:</p>
+<ul class="simple">
+<li>1 x Windows 7/8/10 PC</li>
+<li>1 x National Instruments DAQmx driver</li>
+<li>Anser Command Line Tools or</li>
+<li>Anser Application (GUI)</li>
+</ul>
+</div>
+<div class="section" id="hardware-setup">
+<span id="hardware-setup"></span><h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>On your windows PC install the <em>National Instruments DAQmx driver</em>. This can be found at <a class="reference external" href="https://www.ni.com/">https://www.ni.com/</a>.</li>
+<li>Place the Anser EMT field generator on a <em>metal-free surface.</em></li>
+<li>Connect the base station to the field generator using the supplied <em>centronics cable</em>.</li>
+<li>Connect the <em>barrel jack power adapter</em> to the base station via the DC-IN port. The red standby LED located on the front panel of the unit should light up.</li>
+<li>Connect the Windows PC to the NI-DAQ port of the base station using the supplied <em>USB A-B cable</em>. Using a second <em>USB A-B cable</em> connect the Windows PC to the MCU port.</li>
+<li>Wait few moments to let the driver install. The <em>NI Measurement and Automation explorer</em> provided with the driver should launch automatically, take note of the National Instruments device enumeration e.g. <strong>DevX</strong>. If this is the first time an National Instruments device has been connected to the PC then its enumerated name is Dev1.</li>
+<li>Power on the base station by pressing the <em>power button</em> at the rear of the unit. The green LED located on the front panel of the unit should light up.</li>
+<li>Connect a <em>sensor probe</em> to the first port on the front of the unit.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download.html" class="btn btn-neutral float-right" title="Download" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="summary.html" class="btn btn-neutral" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Alexander Jaeger, Stephen Hinds, Kilian O Donoghue, Padraig Cantillon-Murphy.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'alpha',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
