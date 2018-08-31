@@ -1,3 +1,4 @@
+'''The container of all tabs'''
 from PyQt5.QtWidgets import QTabWidget
 from app.gui.tabs.systemtab import SystemTab
 from app.gui.tabs.igttab import IGTTab
@@ -15,8 +16,8 @@ class TabWidget(QTabWidget):
     Container for the visualisation, tracking, calibration and settings tabs.
     Most tabs house a specialised widget such as a graph (left) and a side panel (right).
     '''
-    def __init__(self, parent=None):
-        super(TabWidget, self).__init__(parent)
+    def __init__(self):
+        super(TabWidget, self).__init__()
         self.igttab = IGTTab()
         self.systemtab = SystemTab()
         self.calibrationtab = CalibrationTab()
