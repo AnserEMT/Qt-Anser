@@ -3,16 +3,16 @@
 block_cipher = None
 
 
-a = Analysis(['app.py'],
-             pathex=['C:\\Users\\Stephen Hinds\\Documents\\python-anser'],
+a = Analysis(['../application.py'],
+             pathex=['.'],
              binaries=[],
-             datas=[('./configs/*.yaml', './configs/'),
-                    ('./sensors/*.yaml', './sensors/'),
-                    ('./templates/*.yaml', './templates/'),
-                    ('./resources/icons/*', './resources/icons/'),
-                    ('./resources/cad/*', './resources/cad/'),
-                    ('../../AppData/Local/Programs/Python/Python36/Lib/site-packages/scipy/extra-dll/', '.')],
-             hiddenimports=['PyQt5.sip', 'scipy._lib.messagestream', 
+             datas=[('../config/configs/*.yaml', './config/configs/'),
+                    ('../config/sensors/*.yaml', './config/sensors/'),
+                    ('../config/templates/*.yaml', './config/templates/'),
+                    ('../app/resources/icons/*', './app/resources/icons/'),
+                    ('../app/resources/cad/*', './app/resources/cad/'),
+                    ('../../../../AppData/Local/Programs/Python/Python36/Lib/site-packages/scipy/extra-dll/', '.')],
+             hiddenimports=['PyQt5.sip', 'scipy._lib.messagestream',
                             'scipy.special._ufuncs_cxx',
                             'scipy.linalg.cython_blas',
                             'scipy.linalg.cython_lapack',
@@ -42,11 +42,11 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True,
-          icon='./resources/icons/anser_logo.ico')
+          icon='../app/resources/icons/anser_logo.ico')
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
                a.datas,
                strip=False,
                upx=True,
-               name='app')
+               name='Anser')
