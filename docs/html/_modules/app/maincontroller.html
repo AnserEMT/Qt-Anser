@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.maincontroller &mdash; Qt-Anser alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qt-Anser
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../summary.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">Anser Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qt-Anser</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>app.maincontroller</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for app.maincontroller</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;Connects the UI to the Anser system&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="k">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">pyqtSlot</span><span class="p">,</span> <span class="n">QObject</span>
+
+<div class="viewcode-block" id="MainController"><a class="viewcode-back" href="../../generated/app.maincontroller.html#app.maincontroller.MainController">[docs]</a><span class="k">class</span> <span class="nc">MainController</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; The controller is responsible for the control flow of the application.</span>
+<span class="sd">        It acts as the glue of the application by connecting the GUI to the Anser (EMT) system.</span>
+<span class="sd">        It delegates UI events to the appropriate Anser (EMT) function, vice versa.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">system</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param view: :mod:`~app.mainwindow` instance (representing the UI)</span>
+<span class="sd">        :param system: :mod:`~app.qtanser` instance (representing the Anser System)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MainController</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">system</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">systemPanel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">systemtab</span><span class="o">.</span><span class="n">systemPanel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fftGraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">systemtab</span><span class="o">.</span><span class="n">fftGraph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">positionGraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">igttab</span><span class="o">.</span><span class="n">positionGraph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">igttab</span><span class="o">.</span><span class="n">igtPanel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">calibrationtab</span><span class="o">.</span><span class="n">calibrationPanel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gridGraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">calibrationtab</span><span class="o">.</span><span class="n">gridwidget</span><span class="o">.</span><span class="n">graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configEditor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">developertab</span>
+
+        <span class="c1"># SYSTEM EVENTS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_MODE_CHANGED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setStatusbarMode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_MODE_TRACKING</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systemPanel</span><span class="o">.</span><span class="n">setSystemInfo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_MODE_TRACKING</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fftGraph</span><span class="o">.</span><span class="n">populateCombo</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setStatusbarSystemLED</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systemPanel</span><span class="o">.</span><span class="n">setAllCoilLEDs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fftGraph</span><span class="o">.</span><span class="n">clearGraph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positionGraph</span><span class="o">.</span><span class="n">clearGraph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span><span class="o">.</span><span class="n">incoming_browser</span><span class="o">.</span><span class="n">clear</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">setCalibrationComplete</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gridGraph</span><span class="o">.</span><span class="n">resetGraph</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SERVER_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span><span class="o">.</span><span class="n">setStatus</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SERVER_STATUS</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setStatusbarServerLED</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SENSORS_CHANGED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">populateCombosWithSensors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SENSORS_CHANGED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systemPanel</span><span class="o">.</span><span class="n">populateCombos</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_POSITIONS_ACQUIRED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positionGraph</span><span class="o">.</span><span class="n">updateGraph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_POSITIONS_ACQUIRED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span><span class="o">.</span><span class="n">setCoordinates</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SAMPLES_ACQUIRED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fftGraph</span><span class="o">.</span><span class="n">updateGraph</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_NETWORK_MSG_RECEIVED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span><span class="o">.</span><span class="n">setIncomingBrowser</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SYSTEM_STATUS_NOTIFICATION</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">notificationHanlder</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_MODE_CALIBRATION</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">setReadyToCapture</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_POINT_CAPTURED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gridGraph</span><span class="o">.</span><span class="n">moveToPosition</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_POINT_CAPTURED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">setNextCapture</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_READY_TO_CALIBRATE</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">setReadyToCalibrate</span><span class="p">)</span>
+
+        <span class="c1"># thread calling controller.stopCalibration() others should connect to system status resert</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_CALIBRATION_COMPLETED</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">stopCalibration</span><span class="p">)</span>
+        <span class="c1"># self.controller.SYS_EVENT_MODE_CALIBRATION.connect(self.statusBarModeLabel)</span>
+
+        <span class="c1"># UI REQUESTS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">systemPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CREATE_SYSTEM</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">startTracking</span><span class="p">)</span>  <span class="c1"># -&gt;SYS_EVENT_SYSTEM_INITIALISED</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">igtPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CREATE_SERVER</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">startServer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CREATE_NEW_SENSOR</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">createNewSensor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_REMOVE_SENSOR</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">removeSensor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CREATE_CALIBRATION_SYSTEM</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">startCalibration</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CAPTURE_POINT</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">capturePoint</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CALIBRATE</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gridGraph</span><span class="o">.</span><span class="n">flash</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calibrationPanel</span><span class="o">.</span><span class="n">UI_REQUEST_CALIBRATE</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">calibrate</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYS_EVENT_SENSORS_CHANGED</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">getSensors</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configEditor</span><span class="o">.</span><span class="n">UI_REQUEST_CHANGE_DEFAULT_CONFIG</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">changeDefaultConfig</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Alexander Jaeger, Stephen Hinds, Kilian O Donoghue, Padraig Cantillon-Murphy.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'alpha',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -2,4 +2,4 @@
 Download
 =============
 | Versions:
-|	:download:`App 1.0<../install/App.zip>`
+|	:download:`App 0.1 <../install/app.zip>`
