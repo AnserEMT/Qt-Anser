@@ -5,12 +5,12 @@ from app.gui.graphs.positiongraph import PositionGraph
 from app.gui.panels.igtpanel import IGTPanel
 
 
-class IGTTab(QWidget):
+class VisualisationTab(QWidget):
     '''
     Contains a 3D visualisation view to display sensor positions and a side panel to activate OpenIGTLink.
     '''
     def __init__(self):
-        super(IGTTab, self).__init__()
+        super(VisualisationTab, self).__init__()
         self.positionGraph = PositionGraph()
         self.igtPanel = IGTPanel()
         tabLayout = QVBoxLayout()
