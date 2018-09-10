@@ -17,6 +17,6 @@ The aim of the Anser project is to provide an open-source implementation for ele
 |[Python-Anser](https://github.com/AlexJaeger/python-anser)|Python|Cross-plaform|CLI|
 |[Matlab-Anser](https://github.com/AlexJaeger/AnserEMT)|Matlab|Windows|CLI|
 <small> 
-	**GUI**: Graphical User Interface  **CLI**: Command Line Interface
+	GUI: Graphical User Interface  CLI: Command Line Interface
 </small>
 
