@@ -96,10 +96,10 @@ To calibrate, Go to → CALIBRATION TAB
 	> **Note:** After capturing the first point, you may use the ENTER Key (↵) for subsequent captures.
 - Once all points have been captured, the **‘Calibrate’** button becomes enabled. Click **‘Calibrate’**. Wait for the virtual field generator board to reset to its default red colour.
 The color coding scheme for the virtual field generator board is as follows:
-   - Green Colour – Point has been captured
-    - Red Colour – Point has not yet been captured
-    - Blue Colour – Next point to be captured
-    - Purple – Calibrating
+	- Green: Point has been captured
+	- Red: Point has not yet been captured
+	- Blue: Next point to be capture
+	- Purple: Calibrating
 
 ###  STEP 4: Tracking
 Tracking is only possible after calibrating the system with your sensor.
@@ -115,4 +115,5 @@ Once, tracking has started, go to → SERVER TAB
 
 To use Openigtlink, go the → SERVER TAB
 - Under ‘Openigtlink’, select localhost and enter your preferred port (default is *18944*). Click **‘Connect’** to host a server and transfer sensor position
+
 

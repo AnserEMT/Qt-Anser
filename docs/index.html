@@ -83,8 +83,8 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="README.html">Anser Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
@@ -152,14 +152,72 @@
 <h1>Welcome to Qt-Anser<a class="headerlink" href="#welcome-to-qt-anser" title="Permalink to this headline">¶</a></h1>
 <p>Qt-Anser is the graphical user interface (GUI) for the Anser System, built using the PyQt platform.</p>
 <p>The aim of the Anser project is to provide an open-source implementation for electromagnetic tracking with particular application to image-guided interventions. The system is compatible with commercially available EMT sensors as well as the Open Network Interface for Image-Guided Therapy (OpenIGTLink) for easy communication with visualisation toolkits such as MITK and 3D Slicer.</p>
+<blockquote>
+<div><!doctype html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+			<style>
+		.container {
+		  position: relative;
+		}
+
+		.image {
+		  display: block;
+		  width: 100%;
+		  height: auto;
+		}
+
+		.overlay {
+		  position: absolute;
+		  top: 0;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  height: 100%;
+		  width: 100%;
+		  opacity: 0;
+		  transition: .5s ease;
+		  background-color: whitesmoke;
+		}
+
+		.container:hover .overlay {
+		  opacity: 1;
+		}
+
+		.text {
+		  color: black;
+		  font-size: 25px;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  -webkit-transform: translate(-50%, -50%);
+		  -ms-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
+		  text-align: center;
+		}
+		</style>
+		<section class="container">
+			<a class="image" href="reveal/slide-app.html">
+				<img alt="reveal.js example default theme" src="reveal/img/app/slide2.png" width="865" height="517">
+				<div class="overlay">
+				    <div class="text">View Slideshow</div>
+				</div>
+			</a>
+		</section>
+	</body>
+</html>
+</div></blockquote>
 </div>
 <div class="section" id="contents">
 <h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="README.html">Anser Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 </div>

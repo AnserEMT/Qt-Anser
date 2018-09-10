@@ -82,8 +82,8 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../summary.html">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Anser Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../download.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
 </ul>
 
@@ -151,7 +151,7 @@
 <span></span><span class="sd">&#39;&#39;&#39;The container of all tabs&#39;&#39;&#39;</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="k">import</span> <span class="n">QTabWidget</span>
 <span class="kn">from</span> <span class="nn">app.gui.tabs.systemtab</span> <span class="k">import</span> <span class="n">SystemTab</span>
-<span class="kn">from</span> <span class="nn">app.gui.tabs.igttab</span> <span class="k">import</span> <span class="n">IGTTab</span>
+<span class="kn">from</span> <span class="nn">app.gui.tabs.visualisationtab</span> <span class="k">import</span> <span class="n">VisualisationTab</span>
 <span class="kn">from</span> <span class="nn">app.gui.tabs.calibrationtab</span> <span class="k">import</span> <span class="n">CalibrationTab</span>
 <span class="kn">from</span> <span class="nn">app.gui.tabs.configeditortab</span> <span class="k">import</span> <span class="n">ConfigEditorTab</span>
 
@@ -168,11 +168,11 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TabWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">igttab</span> <span class="o">=</span> <span class="n">IGTTab</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">igttab</span> <span class="o">=</span> <span class="n">VisualisationTab</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">systemtab</span> <span class="o">=</span> <span class="n">SystemTab</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">calibrationtab</span> <span class="o">=</span> <span class="n">CalibrationTab</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">developertab</span> <span class="o">=</span> <span class="n">ConfigEditorTab</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igttab</span><span class="p">,</span> <span class="s2">&quot;Server&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igttab</span><span class="p">,</span> <span class="s2">&quot;Visualisation&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systemtab</span><span class="p">,</span> <span class="s2">&quot;Tracking&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrationtab</span><span class="p">,</span> <span class="s1">&#39;Calibration&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">developertab</span><span class="p">,</span> <span class="s2">&quot;Developer&quot;</span><span class="p">)</span></div>

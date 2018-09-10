@@ -56,7 +56,7 @@ Tabs
 .. autosummary::
    :toctree:generated
    	systemtab
-   	igttab
+   	visualisationtab
    	calibrationtab
    	configeditortab
 

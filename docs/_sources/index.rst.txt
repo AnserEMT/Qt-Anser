@@ -11,13 +11,15 @@ Qt-Anser is the graphical user interface (GUI) for the Anser System, built using
 
 The aim of the Anser project is to provide an open-source implementation for electromagnetic tracking with particular application to image-guided interventions. The system is compatible with commercially available EMT sensors as well as the Open Network Interface for Image-Guided Therapy (OpenIGTLink) for easy communication with visualisation toolkits such as MITK and 3D Slicer.
 
+.. include:: app.rst
+
 Contents
 ================================
 .. toctree::
 	:maxdepth: 1
 
 	summary
-	README.md
+	hardware
 	download
 	license
 
