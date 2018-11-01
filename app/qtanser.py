@@ -72,11 +72,12 @@ class QtAnser(QObject):
             selectedSensorNames = []
             selectedChannels = []
             selectedPorts = []
+            config = guiutils.import_default_config_settings()
 
             for index, (sensorName, port) in enumerate(zip(sensorNames, ports)):
                 if port is True:
                     portNo = index + 1
-                    channel = utils.convert_port_num_to_channel_num(portNo)
+                    channel = config['system']['channels'][portNo-1]
                     sensor_settings = utils.import_sensor_settings(sensorName)
                     if sensor_settings is not None:
                         sensor = Sensor(sensor_settings)
@@ -86,7 +87,6 @@ class QtAnser(QObject):
                         selectedSensorNames.append(sensorName)
                         selectedPorts.append(portNo)
 
-            config = guiutils.import_default_config_settings()
 
             if len(selectedSensors) == 0:
                 logging.info('No ports or sensors were selected')
@@ -178,11 +178,11 @@ class QtAnser(QObject):
     def startCalibration(self, sensorName, port):
         if self.mode == MODE_IDLE:
             try:
-                channel = utils.convert_port_num_to_channel_num(port)
+                config = guiutils.import_default_config_settings()
+                channel = config['system']['channels'][port-1]
                 sensor_settings = utils.import_sensor_settings(sensorName)
                 sensor = Sensor(sensor_settings)
                 sensor.channel = channel
-                config = guiutils.import_default_config_settings()
                 calibration = EMCalibration(sensor, config)
 
                 qtScheduler = QtScheduler(QtCore)

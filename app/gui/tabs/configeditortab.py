@@ -93,12 +93,12 @@ class ConfigEditorTab(QWidget):
             print(str(e))
 
     def populateCombos(self):
-        for file in utils.get_all_config_files():
+        for file in utils.find_all_configs():
             self.combobox.addItem(file.title(), file)
 
     def saveChanges(self):
         filename = self.combobox.currentText()
-        filepath = utils.get_config_filepath(filename)
+        filepath = utils.find_config(filename)
         utils.export_settings(self.data, filepath)
 
     def handleItemChanged(self, item):

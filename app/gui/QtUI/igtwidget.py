@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'igtwidget.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -64,6 +64,11 @@ class Ui_igtwidget(object):
         self.localhost.setObjectName("localhost")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.localhost)
         self.label_2 = QtWidgets.QLabel(self.groupBox_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -78,6 +83,11 @@ class Ui_igtwidget(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
         self.x_label = QtWidgets.QLabel(self.groupBox_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_label.sizePolicy().hasHeightForWidth())
+        self.x_label.setSizePolicy(sizePolicy)
         self.x_label.setObjectName("x_label")
         self.horizontalLayout.addWidget(self.x_label)
         self.label_6 = QtWidgets.QLabel(self.groupBox_2)
@@ -102,6 +112,23 @@ class Ui_igtwidget(object):
         self.z_label = QtWidgets.QLabel(self.groupBox_2)
         self.z_label.setObjectName("z_label")
         self.horizontalLayout.addWidget(self.z_label)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.label_5 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout.addWidget(self.label_5)
+        self.sensor = QtWidgets.QComboBox(self.groupBox_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sensor.sizePolicy().hasHeightForWidth())
+        self.sensor.setSizePolicy(sizePolicy)
+        self.sensor.setObjectName("sensor")
+        self.sensor.addItem("")
+        self.sensor.addItem("")
+        self.sensor.addItem("")
+        self.sensor.addItem("")
+        self.horizontalLayout.addWidget(self.sensor)
         self.formLayout.setLayout(4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
         self.label = QtWidgets.QLabel(self.groupBox_2)
         self.label.setObjectName("label")
@@ -124,8 +151,8 @@ class Ui_igtwidget(object):
         self.apply_button.setObjectName("apply_button")
         self.verticalLayout_4.addWidget(self.apply_button, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout.addWidget(self.groupBox_2)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem2)
 
         self.retranslateUi(igtwidget)
         QtCore.QMetaObject.connectSlotsByName(igtwidget)
@@ -146,6 +173,11 @@ class Ui_igtwidget(object):
         self.y_label.setText(_translate("igtwidget", "0"))
         self.label_4.setText(_translate("igtwidget", "z:"))
         self.z_label.setText(_translate("igtwidget", "0"))
+        self.label_5.setText(_translate("igtwidget", "Sensor:"))
+        self.sensor.setItemText(0, _translate("igtwidget", "1"))
+        self.sensor.setItemText(1, _translate("igtwidget", "2"))
+        self.sensor.setItemText(2, _translate("igtwidget", "3"))
+        self.sensor.setItemText(3, _translate("igtwidget", "4"))
         self.label.setText(_translate("igtwidget", "Incoming:"))
         self.apply_button.setText(_translate("igtwidget", "Connect"))
 

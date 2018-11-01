@@ -1,6 +1,7 @@
 '''Displays sensor positions in real time'''
 import pyqtgraph.opengl as gl
 import numpy as np
+import utils.utils as utils
 from stl import mesh
 MAX_NUM_OF_SENSORS = 4
 
@@ -13,7 +14,7 @@ class PositionGraph(gl.GLViewWidget):
         super(PositionGraph, self).__init__()
         self.setWindowTitle('Anser Position')
         self.setBackgroundColor('w')
-        anser_mesh = mesh.Mesh.from_file('./app/resources/cad/mesh.stl')
+        anser_mesh = mesh.Mesh.from_file(utils.resource_path('./app/resources/cad/mesh.stl'))
         anser_mesh = gl.MeshData(vertexes=anser_mesh.vectors)
         m = gl.GLMeshItem(meshdata=anser_mesh, shader='shaded', color=(0,1,0,0.1))
         m.rotate(135, 0, 0, 1)

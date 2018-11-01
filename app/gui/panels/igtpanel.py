@@ -17,7 +17,6 @@ class IGTPanel(QWidget, Ui_igtwidget):
         self.setStatus(False)
         self.apply_button.clicked.connect(lambda: self.UI_REQUEST_CREATE_SERVER.emit(self.port.text(),
                                                                                      self.localhost.isChecked()))
-
     def setIncomingBrowser(self, message):
         self.incoming_browser.clear()
         self.incoming_browser.setText(message)
@@ -29,6 +28,13 @@ class IGTPanel(QWidget, Ui_igtwidget):
     @pyqtSlot(list)
     def setCoordinates(self, positions):
         #TODO: this just works for one sensor
-        self.x_label.setText(str(round(positions[0][0],2)))
-        self.y_label.setText(str(round(positions[0][1],2)))
-        self.z_label.setText(str(round(positions[0][2],2)))
+        sensor = int(self.sensor.currentText())
+        if sensor <= len(positions):
+            self.x_label.setText(str(round(positions[sensor-1][0],2)))
+            self.y_label.setText(str(round(positions[sensor-1][1],2)))
+            self.z_label.setText(str(round(positions[sensor-1][2],2)))
+        else:
+            self.x_label.setText('0')
+            self.y_label.setText('0')
+            self.z_label.setText('0')
+

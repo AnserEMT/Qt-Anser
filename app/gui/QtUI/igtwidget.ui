@@ -68,16 +68,7 @@
       <string/>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
-      <property name="leftMargin">
-       <number>20</number>
-      </property>
-      <property name="topMargin">
-       <number>20</number>
-      </property>
-      <property name="rightMargin">
-       <number>20</number>
-      </property>
-      <property name="bottomMargin">
+      <property name="margin">
        <number>20</number>
       </property>
       <item>
@@ -132,6 +123,12 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Coordinates:</string>
           </property>
@@ -139,16 +136,7 @@
         </item>
         <item row="4" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout">
-          <property name="leftMargin">
-           <number>10</number>
-          </property>
-          <property name="topMargin">
-           <number>10</number>
-          </property>
-          <property name="rightMargin">
-           <number>10</number>
-          </property>
-          <property name="bottomMargin">
+          <property name="margin">
            <number>10</number>
           </property>
           <item>
@@ -166,6 +154,12 @@
           </item>
           <item>
            <widget class="QLabel" name="x_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>0</string>
             </property>
@@ -209,6 +203,59 @@
             <property name="text">
              <string>0</string>
             </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Sensor:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="sensor">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <item>
+             <property name="text">
+              <string>1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>3</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>4</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
