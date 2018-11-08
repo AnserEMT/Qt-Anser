@@ -46,8 +46,8 @@ class FFTGraph(QWidget):
     def populateCombo(self, system):
         self.channelComboBox.clear()
         self.channelComboBox.addItem('Coil Sensing Channel', 0)
-        for item in system.channels:
-            self.channelComboBox.addItem('Channels {}'.format(str(item)), int(item))
+        for channel in system.active_channels:
+            self.channelComboBox.addItem('Channels {}'.format(str(channel)), int(channel))
 
     @pyqtSlot(matrix, float)
     def updateGraph(self, samples, sampling_freq):

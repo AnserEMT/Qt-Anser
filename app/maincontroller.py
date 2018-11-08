@@ -27,6 +27,7 @@ class MainController(QObject):
         self.system.SYS_EVENT_MODE_CHANGED.connect(self.view.setStatusbarMode)
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.systemPanel.setSystemInfo)
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.fftGraph.populateCombo)
+        self.system.SYS_EVENT_MODE_TRACKING.connect(self.igtPanel.populateCombo)
 
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.view.setStatusbarSystemLED)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.systemPanel.setAllCoilLEDs)
@@ -72,3 +73,4 @@ class MainController(QObject):
 
         self.system.SYS_EVENT_SENSORS_CHANGED.emit(self.system.getSensors())
         self.configEditor.UI_REQUEST_CHANGE_DEFAULT_CONFIG.connect(self.view.changeDefaultConfig)
+        self.igtPanel.UI_REQUEST_RESET_POSITION.connect(self.system.resetPositions)

@@ -41,7 +41,7 @@ class SystemPanel(QWidget, Ui_systemwidget):
     def setSystemInfo(self, system):
         self.sampling_frequency.setText(str(system.sampling_freq))
         self.refresh_rate.setText(str(system.num_samples))
-        self.active_ports.setText(str(system.ports))
+        self.active_ports.setText(str(system.active_ports))
         for index, freq in enumerate(system.freq):
             self.coilFreqLabels[index].setText(str(freq))
         self.setCoilLEDs(system.coils)

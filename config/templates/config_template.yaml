@@ -36,7 +36,8 @@ solver:
   verbosity: 0
   xtol: 1e-06
 system:
-  channels: [1, 3]
+  channels: []
+  primary_channels: [1, 3, 5, 7]
   device_cal: 7x7
   device_name: Dev3
   device_type: nidaq

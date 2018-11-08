@@ -70,19 +70,21 @@ class QtAnser(QObject):
         if self.mode == MODE_IDLE:
             selectedSensors = []
             selectedSensorNames = []
-            selectedChannels = []
             selectedPorts = []
+
             config = guiutils.import_default_config_settings()
+            if config is not None:
+                primaryChannels = config['system']['primary_channels']
+            else:
+                logging.info('No configuration file found. Go to -> Developer Tab and select configuration file. Click Make Default.')
+                return
 
             for index, (sensorName, port) in enumerate(zip(sensorNames, ports)):
                 if port is True:
                     portNo = index + 1
-                    channel = config['system']['channels'][portNo-1]
-                    sensor_settings = utils.import_sensor_settings(sensorName)
-                    if sensor_settings is not None:
-                        sensor = Sensor(sensor_settings)
-                        sensor.channel = channel
-                        selectedChannels.append(channel)
+                    sensor = utils.get_sensor(sensorName)
+                    if sensor is not None:
+                        sensor.channel = utils.get_active_channel(sensor.dof, portNo, primary_channels=primaryChannels)
                         selectedSensors.append(sensor)
                         selectedSensorNames.append(sensorName)
                         selectedPorts.append(portNo)
@@ -92,21 +94,22 @@ class QtAnser(QObject):
                 logging.info('No ports or sensors were selected')
             elif len(selectedSensorNames) != len(set(selectedSensorNames)):
                 logging.info('Duplicate sensors selected')
-            elif config is not None:
+            else:
                 config['system']['speed'] = sliderPos
-                config['system']['channels'] = selectedChannels
                 try:
-                    self.anser = EMTracker(config)
+                    self.anser = EMTracker(selectedSensors, config)
                     self.anser.sensors = selectedSensors
                     self.anser.start_acquisition()
                     # system object so we can populate views
-                    System_Template = namedtuple('System', ['freq', 'coils', 'sampling_freq', 'num_samples', 'ports', 'channels'])
-                    system = System_Template(freq=[freq / 1000 for freq in self.anser.filter.transFreqs],
-                                    coils=[True]*8,
-                                    sampling_freq=self.anser.filter.sampleFreq,
-                                    num_samples=self.anser.filter.numSamples,
-                                    ports=selectedPorts,
-                                    channels=self.anser.filter.channels)
+                    System_Template = namedtuple('System', ['freq', 'coils', 'sampling_freq', 'num_samples', 'active_ports', 'active_channels', 'sensors'])
+                    system = System_Template(
+                        freq=[freq / 1000 for freq in self.anser.filter.transFreqs],
+                        coils=[True]*8,
+                        sampling_freq=self.anser.filter.sampleFreq,
+                        num_samples=self.anser.filter.numSamples,
+                        active_ports=selectedPorts,
+                        active_channels = self.anser.active_channels,
+                        sensors=self.anser.sensors)
 
                     qtScheduler = QtScheduler(QtCore)
                     newScheduler = NewThreadScheduler()
@@ -132,8 +135,6 @@ class QtAnser(QObject):
                                  '\n - Ensure device specified is correct. '
                                  '\n (Go to -> Developer Tab, in the configuration file under \'system\' change the \'device_name\' to your DevX indentifier) \n')
                     print(str(e))
-            else:
-                logging.info('No configuration file found. Go to -> Developer Tab and select configuration file. Click Make Default.')
         elif self.mode == MODE_TRACKING:
             self.stopTracking()
             logging.info('Stopped Tracking')
@@ -179,10 +180,9 @@ class QtAnser(QObject):
         if self.mode == MODE_IDLE:
             try:
                 config = guiutils.import_default_config_settings()
-                channel = config['system']['channels'][port-1]
-                sensor_settings = utils.import_sensor_settings(sensorName)
-                sensor = Sensor(sensor_settings)
-                sensor.channel = channel
+                primaryChannels = config['system']['primary_channels']
+                sensor = utils.get_sensor(sensorName)
+                sensor.channel = utils.get_active_channel(sensor.dof, port, primaryChannels)
                 calibration = EMCalibration(sensor, config)
 
                 qtScheduler = QtScheduler(QtCore)
@@ -231,7 +231,7 @@ class QtAnser(QObject):
             self.calibrationThread.emtrackerCalibration.reset()
             self.calibrationThread.terminate()
         except Exception as e:
-            print(str(e))
+            pass
         self.calibrationThread = None
         self.systemMonitor = None
         self.systemStatus = False
@@ -301,3 +301,7 @@ class QtAnser(QObject):
 
     def getSensors(self):
         return utils.get_sensors()
+
+    def resetPositions(self):
+        if self.anser is not None:
+            self.anser.reset_solver()

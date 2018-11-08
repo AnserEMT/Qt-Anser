@@ -1,7 +1,7 @@
 name: ''
 description: ''
-dof: ''
-channel: 1
+dof:
+channel: [1]
 calibration:
     1: [0, 0, 0, 0, 0, 0, 0, 0]
     2: [0, 0, 0, 0, 0, 0, 0, 0]
