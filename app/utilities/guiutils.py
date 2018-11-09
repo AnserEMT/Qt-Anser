@@ -47,5 +47,16 @@ def set_settings_default_config(filename):
 
 def import_default_config_settings():
     settings = QSettings()
-    defaultConfig = settings.value('default_config', type=str)
-    return utils.import_config_settings(defaultConfig)
+    defaultConfigName = settings.value('default_config', type=str)
+    return utils.import_config_settings(defaultConfigName)
+
+def get_board_dimensions():
+    #TODO: fix this
+    settings = QSettings()
+    defaultConfigName = settings.value('default_config', type=str)
+    config = utils.import_config_settings(defaultConfigName)
+    if config is not None:
+        boardType = config['system']['device_cal']
+        return (9, 9) if boardType == '9x9' else (7, 7)
+    else:
+        return (7, 7)

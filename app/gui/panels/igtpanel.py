@@ -30,13 +30,13 @@ class IGTPanel(QWidget, Ui_igtwidget):
 
     def populateCombo(self, system):
         self.sensor_combo.clear()
-        for sensor, port in zip(system.sensors, system.active_ports):
-            self.sensor_combo.addItem(str(sensor.name), port)
+        for index, sensor in enumerate(system.sensors):
+            self.sensor_combo.addItem(str(sensor.name), index)
 
 
     @pyqtSlot(list)
     def setCoordinates(self, positions):
-        port = int(self.sensor_combo.currentData())
-        self.x_label.setText(str(round(positions[port-1][0],2)))
-        self.y_label.setText(str(round(positions[port-1][1],2)))
-        self.z_label.setText(str(round(positions[port-1][2],2)))
+        index = int(self.sensor_combo.currentData())
+        self.x_label.setText(str(round(positions[index][0],2)))
+        self.y_label.setText(str(round(positions[index][1],2)))
+        self.z_label.setText(str(round(positions[index][2],2)))

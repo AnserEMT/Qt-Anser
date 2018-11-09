@@ -1,8 +1,7 @@
 '''Represents the field generator board used during calibration'''
 from pyqtgraph import GraphicsView, GraphItem, TextItem, ViewBox
-from PyQt5.QtCore import Qt, pyqtSlot
 import numpy as np
-
+import app.utilities.guiutils as guiutils
 
 class GridGraph(GraphicsView):
     '''
@@ -23,8 +22,7 @@ class GridItem(GraphItem):
     Subclass of GridGraph
     '''
     def __init__(self):
-        self.x = 7
-        self.y = 7
+        self.x, self.y = guiutils.get_board_dimensions()
         self.num_points = self.x * self.y
         self.textItems = []
         GraphItem.__init__(self)

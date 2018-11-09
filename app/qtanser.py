@@ -304,4 +304,6 @@ class QtAnser(QObject):
 
     def resetPositions(self):
         if self.anser is not None:
-            self.anser.reset_solver()
+            # TODO: fix reset solver function
+            for i in range(3):
+                self.anser.reset_solver()
