@@ -1,5 +1,7 @@
 calibration:
   num_points: {7x7: 49, 9x9: 81, lego: 49}
+  6DOF_theta: {1: 5, 2: 5}
+  6DOF_phi: {1: 0, 2: 180}
 filter:
   attenuation: 200
   cutoff_freq: 1e-05
@@ -42,7 +44,7 @@ system:
   device_name: Dev1
   device_type: nidaq
   flip_enable: false
-  flip_list: null
+  flip_list:
   igt: false
   igt_local: true
   igt_port: 18944
