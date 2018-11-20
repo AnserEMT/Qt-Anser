@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['../application.py'],
-             pathex=['.'],
+             pathex=['../python-anser'],
              binaries=[],
              datas=[('../config/configs/*.yaml', './config/configs/'),
                     ('../config/sensors/*.yaml', './config/sensors/'),
@@ -35,19 +35,18 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          a.binaries,
-          a.zipfiles,
-          a.datas,
-          [],
+          exclude_binaries=True,
           name='application',
-          debug=False,
-          bootloader_ignore_signals=False,
+          debug=True,
           strip=False,
           upx=True,
-          runtime_tmpdir=None,
           console=True,
-          icon='./app/resources/icons/anser_logo.ico' )
-app = BUNDLE(exe,
-             icon='./app/resources/icons/anser_logo.ico',
-             bundle_identifier=None,
-             name='application')
+          icon='../app/resources/icons/anser_logo.ico' )
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas,
+               strip=False,
+               upx=True,
+               name='application',
+               icon='../app/resources/icons/anser_logo.ico' )
