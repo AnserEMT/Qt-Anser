@@ -220,43 +220,46 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">MODE_IDLE</span><span class="p">:</span>
             <span class="n">selectedSensors</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">selectedSensorNames</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">selectedChannels</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">selectedPorts</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">config</span> <span class="o">=</span> <span class="n">guiutils</span><span class="o">.</span><span class="n">import_default_config_settings</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">primaryChannels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][</span><span class="s1">&#39;primary_channels&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No configuration file found. Go to -&gt; Developer Tab and select configuration file. Click Make Default.&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
 
             <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">sensorName</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">sensorNames</span><span class="p">,</span> <span class="n">ports</span><span class="p">)):</span>
                 <span class="k">if</span> <span class="n">port</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                     <span class="n">portNo</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
-                    <span class="n">channel</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_port_num_to_channel_num</span><span class="p">(</span><span class="n">portNo</span><span class="p">)</span>
-                    <span class="n">sensor_settings</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">import_sensor_settings</span><span class="p">(</span><span class="n">sensorName</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">sensor_settings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">sensor_settings</span><span class="p">)</span>
-                        <span class="n">sensor</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
-                        <span class="n">selectedChannels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                    <span class="n">sensor</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_sensor</span><span class="p">(</span><span class="n">sensorName</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">sensor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_active_channel</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">dof</span><span class="p">,</span> <span class="n">portNo</span><span class="p">,</span> <span class="n">primary_channels</span><span class="o">=</span><span class="n">primaryChannels</span><span class="p">)</span>
                         <span class="n">selectedSensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sensor</span><span class="p">)</span>
                         <span class="n">selectedSensorNames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sensorName</span><span class="p">)</span>
                         <span class="n">selectedPorts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">portNo</span><span class="p">)</span>
 
-            <span class="n">config</span> <span class="o">=</span> <span class="n">guiutils</span><span class="o">.</span><span class="n">import_default_config_settings</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">selectedSensors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No ports or sensors were selected&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">selectedSensorNames</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">selectedSensorNames</span><span class="p">)):</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Duplicate sensors selected&#39;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">else</span><span class="p">:</span>
                 <span class="n">config</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][</span><span class="s1">&#39;speed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sliderPos</span>
-                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">selectedChannels</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">anser</span> <span class="o">=</span> <span class="n">EMTracker</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">anser</span> <span class="o">=</span> <span class="n">EMTracker</span><span class="p">(</span><span class="n">selectedSensors</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">sensors</span> <span class="o">=</span> <span class="n">selectedSensors</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">start_acquisition</span><span class="p">()</span>
                     <span class="c1"># system object so we can populate views</span>
-                    <span class="n">System_Template</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;System&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;freq&#39;</span><span class="p">,</span> <span class="s1">&#39;coils&#39;</span><span class="p">,</span> <span class="s1">&#39;sampling_freq&#39;</span><span class="p">,</span> <span class="s1">&#39;num_samples&#39;</span><span class="p">,</span> <span class="s1">&#39;ports&#39;</span><span class="p">,</span> <span class="s1">&#39;channels&#39;</span><span class="p">])</span>
-                    <span class="n">system</span> <span class="o">=</span> <span class="n">System_Template</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="p">[</span><span class="n">freq</span> <span class="o">/</span> <span class="mi">1000</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">transFreqs</span><span class="p">],</span>
-                                    <span class="n">coils</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span>
-                                    <span class="n">sampling_freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">sampleFreq</span><span class="p">,</span>
-                                    <span class="n">num_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">numSamples</span><span class="p">,</span>
-                                    <span class="n">ports</span><span class="o">=</span><span class="n">selectedPorts</span><span class="p">,</span>
-                                    <span class="n">channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
+                    <span class="n">System_Template</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;System&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;freq&#39;</span><span class="p">,</span> <span class="s1">&#39;coils&#39;</span><span class="p">,</span> <span class="s1">&#39;sampling_freq&#39;</span><span class="p">,</span> <span class="s1">&#39;num_samples&#39;</span><span class="p">,</span> <span class="s1">&#39;active_ports&#39;</span><span class="p">,</span> <span class="s1">&#39;active_channels&#39;</span><span class="p">,</span> <span class="s1">&#39;sensors&#39;</span><span class="p">])</span>
+                    <span class="n">system</span> <span class="o">=</span> <span class="n">System_Template</span><span class="p">(</span>
+                        <span class="n">freq</span><span class="o">=</span><span class="p">[</span><span class="n">freq</span> <span class="o">/</span> <span class="mi">1000</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">transFreqs</span><span class="p">],</span>
+                        <span class="n">coils</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span>
+                        <span class="n">sampling_freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">sampleFreq</span><span class="p">,</span>
+                        <span class="n">num_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">numSamples</span><span class="p">,</span>
+                        <span class="n">active_ports</span><span class="o">=</span><span class="n">selectedPorts</span><span class="p">,</span>
+                        <span class="n">active_channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">active_channels</span><span class="p">,</span>
+                        <span class="n">sensors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">sensors</span><span class="p">)</span>
 
                     <span class="n">qtScheduler</span> <span class="o">=</span> <span class="n">QtScheduler</span><span class="p">(</span><span class="n">QtCore</span><span class="p">)</span>
                     <span class="n">newScheduler</span> <span class="o">=</span> <span class="n">NewThreadScheduler</span><span class="p">()</span>
@@ -282,8 +285,6 @@
                                  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> - Ensure device specified is correct. &#39;</span>
                                  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> (Go to -&gt; Developer Tab, in the configuration file under </span><span class="se">\&#39;</span><span class="s1">system</span><span class="se">\&#39;</span><span class="s1"> change the </span><span class="se">\&#39;</span><span class="s1">device_name</span><span class="se">\&#39;</span><span class="s1"> to your DevX indentifier) </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No configuration file found. Go to -&gt; Developer Tab and select configuration file. Click Make Default.&#39;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">MODE_TRACKING</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stopTracking</span><span class="p">()</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Stopped Tracking&#39;</span><span class="p">)</span>
@@ -328,11 +329,10 @@
     <span class="k">def</span> <span class="nf">startCalibration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sensorName</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">MODE_IDLE</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">channel</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_port_num_to_channel_num</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
-                <span class="n">sensor_settings</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">import_sensor_settings</span><span class="p">(</span><span class="n">sensorName</span><span class="p">)</span>
-                <span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">sensor_settings</span><span class="p">)</span>
-                <span class="n">sensor</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">guiutils</span><span class="o">.</span><span class="n">import_default_config_settings</span><span class="p">()</span>
+                <span class="n">primaryChannels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">][</span><span class="s1">&#39;primary_channels&#39;</span><span class="p">]</span>
+                <span class="n">sensor</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_sensor</span><span class="p">(</span><span class="n">sensorName</span><span class="p">)</span>
+                <span class="n">sensor</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_active_channel</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">dof</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">primaryChannels</span><span class="p">)</span>
                 <span class="n">calibration</span> <span class="o">=</span> <span class="n">EMCalibration</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
 
                 <span class="n">qtScheduler</span> <span class="o">=</span> <span class="n">QtScheduler</span><span class="p">(</span><span class="n">QtCore</span><span class="p">)</span>
@@ -381,7 +381,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">calibrationThread</span><span class="o">.</span><span class="n">emtrackerCalibration</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">calibrationThread</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">pass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">calibrationThread</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">systemMonitor</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">systemStatus</span> <span class="o">=</span> <span class="kc">False</span>
@@ -450,7 +450,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">SYS_EVENT_SENSORS_CHANGED</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getSensors</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="QtAnser.getSensors"><a class="viewcode-back" href="../../generated/app.qtanser.html#app.qtanser.QtAnser.getSensors">[docs]</a>    <span class="k">def</span> <span class="nf">getSensors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_sensors</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_sensors</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QtAnser.resetPositions"><a class="viewcode-back" href="../../generated/app.qtanser.html#app.qtanser.QtAnser.resetPositions">[docs]</a>    <span class="k">def</span> <span class="nf">resetPositions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anser</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># TODO: fix reset solver function</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">anser</span><span class="o">.</span><span class="n">reset_solver</span><span class="p">()</span></div></div>
 </pre></div>
 
            </div>
