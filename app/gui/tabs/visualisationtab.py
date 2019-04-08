@@ -1,4 +1,4 @@
-'''3D Visualisation and OpenIGTLink'''
+""" Visualises sensors positions and activates an OpenIGTLink connection """
 from PyQt5.QtWidgets import QSplitter, QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
 from app.gui.graphs.positiongraph import PositionGraph
@@ -6,12 +6,15 @@ from app.gui.panels.igtpanel import IGTPanel
 
 
 class VisualisationTab(QWidget):
-    '''
-    Contains a 3D visualisation view to display sensor positions and a side panel to activate OpenIGTLink.
-    '''
+    """
+    Contains a *3D visualisation graph* to display sensor positions.
+    Also has a *side panel* to activate an OpenIGTLink connection.
+    """
     def __init__(self):
         super(VisualisationTab, self).__init__()
+        # 3D visualisation graph
         self.positionGraph = PositionGraph()
+        # side panel
         self.igtPanel = IGTPanel()
         tabLayout = QVBoxLayout()
         splitter = QSplitter(Qt.Horizontal)

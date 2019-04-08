@@ -1,4 +1,4 @@
-'''Qt Interface for the Anser system'''
+""" Qt Interface for the Anser system """
 from pyqtgraph.Qt import QtCore
 from PyQt5.QtCore import pyqtSignal,QObject, pyqtSlot
 from rx.concurrency import QtScheduler
@@ -22,11 +22,11 @@ MODE_CALIBRATING = 'CAL'
 
 
 class QtAnser(QObject):
-    ''' Allows the application to speak with the Anser(EMT) system.
+    """ Allows the application to speak with the Anser(EMT) system.
     It encapsulates the `Emtracker` class in a `QObject` making it possible to invoke Anser(EMT) functions.
     Also, emits system events and data which is then consumed by the application
     e.g. Status info, samples, sensor positions and network messages.
-    '''
+    """
     SYS_EVENT_MODE_CALIBRATION = pyqtSignal()
     SYS_EVENT_MODE_CHANGED = pyqtSignal(str)
     SYS_EVENT_MODE_TRACKING = pyqtSignal(object)
@@ -67,6 +67,12 @@ class QtAnser(QObject):
     '''----------------------------------------------------------------------------'''
     @pyqtSlot(list, list, int)
     def startTracking(self, sensorNames, ports, sliderPos):
+        """ Starts EMT tracking and instantiates the EMT system
+
+        :param sensorNames: a list containing the selected sensor for each of the ports
+        :param ports: a boolean list indicating whether the selected sensors is to be tracked for each of the ports
+        :param sliderPos: the given tracking speed for the EMT system (1-4, where 1 is fastest and 4 is the most accurate)
+        """
         if self.mode == MODE_IDLE:
             selectedSensors = []
             selectedSensorNames = []
@@ -143,6 +149,7 @@ class QtAnser(QObject):
 
     @pyqtSlot()
     def stopTracking(self):
+        """ Stops tracking and deactivates the EMT system """
         if self.anser is not None:
             self.anser.stop()
             list(map(lambda sub: sub.dispose(), self.subscriptions))
@@ -160,6 +167,10 @@ class QtAnser(QObject):
             self.SYS_EVENT_SYSTEM_STATUS_NOTIFICATION.emit(SystemStatusNotification(message='IDLE'))
 
     def sendPositions(self, positions):
+        """ Broadcasts a list of sensor positions to relevant observers (Qt Signal and slots)
+
+        :param positions: the given list of sensor positions
+        """
         if self.anser is not None:
             xyz_positions = []
             for position in positions:
@@ -169,6 +180,10 @@ class QtAnser(QObject):
             self.SYS_EVENT_POSITIONS_ACQUIRED.emit(xyz_positions)
 
     def sendSamples(self, samples):
+        """ Broadcasts the EMT samples to relevant observers (Qt Signal and slots)
+
+        :param samples: the samples for each of the sensor channels
+        """
         if self.anser is not None:
             self.SYS_EVENT_SAMPLES_ACQUIRED.emit(samples, self.anser.filter.sampleFreq)
 
@@ -177,6 +192,11 @@ class QtAnser(QObject):
     '''----------------------------------------------------------------------------'''
     @pyqtSlot(str, int)
     def startCalibration(self, sensorName, port):
+        """ Starts calibration and instantiates the EMT system
+
+        :param sensorName: the uncalibrated sensor
+        :param port: the port the uncalibrated sensor is connected to
+        """
         if self.mode == MODE_IDLE:
             try:
                 config = guiutils.import_default_config_settings()
@@ -225,6 +245,7 @@ class QtAnser(QObject):
 
     @pyqtSlot()
     def stopCalibration(self):
+        """ Stops calibration and deactivates the EMT system """
         self.SYS_EVENT_SENSORS_CHANGED.emit(self.getSensors())
         list(map(lambda sub: sub.dispose(), self.subscriptions))
         try:
@@ -243,11 +264,13 @@ class QtAnser(QObject):
 
     @pyqtSlot()
     def capturePoint(self):
+        """ Captures the calibration test point """
         if self.calibrationThread is not None:
             self.calibrationThread.capture()
 
     @pyqtSlot()
     def calibrate(self):
+        """ Calibrates the EMT tracking once all points have been captured"""
         if self.calibrationThread is not None:
             self.calibrationThread.calibrate()
 
@@ -257,6 +280,11 @@ class QtAnser(QObject):
 
     @pyqtSlot(str, bool)
     def startServer(self, port, localhost):
+        """ Start the OpenIGTLink server
+
+        :param port: the given port number
+        :param localhost: a boolean indicating whether to use localhost
+        """
         if self.mode == MODE_TRACKING and self.serverStatus is False:
             if self.anser is not None:
                 if port.isdigit():
@@ -273,6 +301,7 @@ class QtAnser(QObject):
             self.stopServer()
 
     def stopServer(self):
+        """ Stops the OpenIGTLink server """
         if self.anser is not None:
             if self.anser.reset_server() is True:
                 self.serverStatus = False
@@ -291,18 +320,35 @@ class QtAnser(QObject):
     '''----------------------------------------------------------------------------'''
     @pyqtSlot(str, str, str)
     def createNewSensor(self, name, description, dof):
+        """ Creates a new sensor file
+
+        :param name: the given sensor name
+        :param description: the given description of the sensor
+        :param dof: the type of sensor DOF (5 or 6)
+        """
         utils.add_sensor(name, description, dof)
         self.SYS_EVENT_SENSORS_CHANGED.emit(self.getSensors())
 
     @pyqtSlot(str)
     def removeSensor(self, name):
+        """ Removes the given sensor file
+
+        :param name: the given sensor file to remove
+        """
         utils.remove_sensor(name)
         self.SYS_EVENT_SENSORS_CHANGED.emit(self.getSensors())
 
     def getSensors(self):
+        """ Retrieves all sensor files
+
+        :return: list of all sensor files
+        """
         return utils.get_sensors()
 
     def resetPositions(self):
+        """ Resets sensor positions, if solver gets stuck
+        NOTE: This is a temporary solution.
+        """
         if self.anser is not None:
             # TODO: fix reset solver function
             for i in range(3):
