@@ -1,17 +1,17 @@
-'''Qt interface for performing a calibration'''
+""" Qt interface for performing a calibration """
 from PyQt5.QtCore import QThread
 import threading
 
 
 class CalibrationThread(QThread):
-    ''' A wrapper for the `emcalibration` class '''
+    """ A wrapper for the `emcalibration` class """
     def __init__(self, emCalibration, pointCapturedEvent, readyToCalibrateEvent, calibrationCompleteEvent):
-        '''
+        """
         :param emCalibration: `emCalibration` instance
         :param pointCapturedEvent: the pyqtSignal() signalling a point has been captured
         :param readyToCalibrateEvent: the pyqtSignal() signalling all points have been captured
         :param calibrationCompleteEvent: the pyqtSignal() signalling calibration has completed
-        '''
+        """
         super(CalibrationThread, self).__init__()
         self.emtrackerCalibration = emCalibration
         self.finalCapture = emCalibration.point_count

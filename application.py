@@ -1,4 +1,4 @@
-'''Runs the application'''
+""" Runs the application """
 import sys
 try:
     sys.path.index('./python-anser/')
@@ -18,7 +18,7 @@ import os
 
 
 class Application(QApplication):
-    '''Responsible for instantiating application and main settings.'''
+    """ Responsible for instantiating application and main settings. """
     def __init__(self, sys_argv):
         super(Application, self).__init__(sys_argv)
         self.setApplicationName("Anser")

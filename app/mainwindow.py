@@ -170,7 +170,7 @@ class MainWindow(QMainWindow):
     def setStatusbarMode(self, mode):
         """ Sets the EMT mode (on the status bar)
 
-        :param mode: the current EMT Mode (CAL,TRK,IDEL)
+        :param mode: the current EMT Mode (CAL,TRK,IDLE)
         """
         self.statusBarModeLabel.setText(mode)
 
