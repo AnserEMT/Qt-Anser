@@ -35,6 +35,8 @@ from recommonmark.transform import AutoStructify
 from autoapi.extension import *
 
 
+sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath('../'))
 print(os.path.abspath('../'))
 try:
@@ -215,6 +217,7 @@ def setup(app):
         'auto_toc_tree_section': 'Contents',
         'enable_eval_rst': True,
         'enable_auto_doc_ref': True,
+        'enable_auto_toc_tree': True,
     }, True)
     app.add_transform(AutoStructify)
     app.connect('autodoc-skip-member', autodoc_skip_member)

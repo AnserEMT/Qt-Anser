@@ -6,23 +6,25 @@ Documentation
 Main Files
 -----------
 Main Executable
+^^^^^^^^^
 
 .. currentmodule:: qt-anser
 
 .. autosummary::
-   :toctree:generated
+   :toctree:generated/
    application
 
-.. currentmodule:: app
 
 Interfaces
+^^^^^^^^^
+.. currentmodule:: app
 
 .. autosummary::
-   :toctree:generated
-   	qtanser
-   	mainwindow
-   	maincontroller
-   	calibrationthread
+   :toctree:generated/
+   qtanser
+   mainwindow
+   maincontroller
+   calibrationthread
 
 
 -----------
@@ -34,40 +36,40 @@ Graphs
 .. currentmodule:: app.gui.graphs
 
 .. autosummary::
-   :toctree:generated
-    gridgraph
-   	fftgraph
-   	positiongraph
+   :toctree:generated/
+   gridgraph
+   fftgraph
+   positiongraph
  
 Panels
 ^^^^^^^^^
 .. currentmodule:: app.gui.panels
 
 .. autosummary::
-   :toctree:generated
-   	calibrationpanel
-   	igtpanel
-   	systempanel
+   :toctree:generated/
+   calibrationpanel
+   igtpanel
+   systempanel
 
 Tabs
 ^^^^^^^^^
 .. currentmodule:: app.gui.tabs
 
 .. autosummary::
-   :toctree:generated
-   	systemtab
-   	visualisationtab
-   	calibrationtab
-   	configeditortab
+   :toctree:generated/
+   systemtab
+   visualisationtab
+   calibrationtab
+   configeditortab
 
 Specialised Widgets
 ^^^^^^^^^^^^^^^^^^
 .. currentmodule:: app.gui.widgets
 
 .. autosummary::
-   :toctree:generated
-   	tabwidget
-   	loggerwidget
+   :toctree:generated/
+   tabwidget
+   loggerwidget
    	
    
    
