@@ -3,20 +3,16 @@
 **Qt-Anser** is the graphical user interface (GUI) for the [Anser EMT System](https://github.com/StephenHinds/AnserEMT-Homepage/) based on the [python-anser](https://github.com/AlexJaeger/python-anser) library.
 It is built using the PyQt platform and Pyqtgraph a graphics tool for 2D/3D (OpenGL) visualisation.
 
-Go to the [Qt-Anser Homepage ](https://stephenhinds.github.io/qt-anser/) to download the application, 
-read the documentation or view system manual.
-
 ## Users
 
 #### Downloads
-The application is available on the Windows platform and can be downloaded [here]().
+The application is available on the Windows or MacOS platform and can be downloaded [here](https://github.com/StephenHinds/qt-anser/releases).
 
 #### Manual
-A quickstart guide for the Anser EMT system and application is also available [here]() .
+A quickstart guide for the Anser EMT system and application is also available [here](Anser_Manual.pdf) .
 
 #### Drivers
-The application requires the latest version of NI DAQmx (available here). Please refer to the user manual for installation.
-
+The application requires the latest version of NI DAQmx (available for [Windows](http://www.ni.com/download/ni-daqmx-17.6/7169/en/), [MacOS](http://www.ni.com/download/ni-daqmx-base-15.0/5648/en/)). Please refer to the user manual for installation.
 
 
 ## Developers
@@ -28,6 +24,7 @@ The documentation for Qt-Anser is available [here]().
 
 #### Build Instructions
 
+- Qt-Anser is available on Windows and MacOS.
 - Setup your **Anaconda Environment** and ensure **Python version** is 3.6.5
 - The following packages can be installed using the **pip package manager**:
 PyQt5, QDarkStyle, scipy, numpy, numpy-stl, pyqtgraph, pyserial, ruamel.yaml, PyOpenGL, PyDAQmx, pyIGTLink, rx.
@@ -36,7 +33,7 @@ PyQt5, QDarkStyle, scipy, numpy, numpy-stl, pyqtgraph, pyserial, ruamel.yaml, Py
 
 
 <p align="center">
-    <img  width="70%"src="sphinx/build_setup.png">
+    <img  width="70%"src="readme/build_setup.png">
 </p>
 
 
@@ -52,6 +49,26 @@ Application packaging freezes or packages the program into a standalone executab
 **PyInstaller** can be used for this purpose. The `app.spec` file contains the list of instructions to package the application. Your setup should be as follows:
 
 <p align="center">
-	<img  width="70%"src="sphinx/pyinstaller_setup.png">
+	<img  width="70%"src="readme/pyinstaller_setup.png">
 </p>
 
+
+## Cite this project
+- https://doi.org/10.1007/s11548-017-1568-7
+- https://doi.org/10.1007/978-3-030-00937-3_20
+
+## References
+This software project uses the following open-source packages
+[SciPy](https://www.scipy.org),
+[NumPy](https://www.numpy.org),
+[PyDAQmx](https://pythonhosted.org/PyDAQmx/),
+[PyQt](https://riverbankcomputing.com/software/pyqt/intro),
+[PyIGTLink](https://github.com/Danielhiversen/pyIGTLink),
+[PyQtGraph](http://www.pyqtgraph.org/),
+[Rx](https://github.com/ReactiveX/RxPY),
+[QDarkStyle](https://github.com/ColinDuquesnoy/QDarkStyleSheet).
+
+
+[0]: http://www.ni.com/download/ni-daqmx-17.6/7169/en/
+[1]: http://www.ni.com/download/ni-daqmx-base-15.0/5648/en/
+[3]: http://www.ni.com/download/ni-daqmx-base-15.0/5644/en/
