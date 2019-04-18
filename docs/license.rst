@@ -1,3 +1,5 @@
 =============
 License
 =============
+
+.. include:: LICENSE.md

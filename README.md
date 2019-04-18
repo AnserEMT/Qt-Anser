@@ -1,7 +1,13 @@
 # Qt-Anser
 
-**Qt-Anser** is the graphical user interface (GUI) for the [Anser EMT System](https://github.com/StephenHinds/AnserEMT-Homepage/) based on the [python-anser](https://github.com/AlexJaeger/python-anser) library.
-It is built using the PyQt platform and Pyqtgraph a graphics tool for 2D/3D (OpenGL) visualisation.
+**Qt-Anser** is the graphical user interface (GUI) for the open-source [Anser](https://github.com/StephenHinds/AnserEMT-Homepage/) electromagnetic tracking system based on the [python-anser](https://github.com/AlexJaeger/python-anser) library.
+It is built using the PyQt platform and Pyqtgraph, a graphics tool for 2D/3D (OpenGL) visualisation.
+
+<p align="center">
+	<a class="image" href="readme/plugins/reveal/slide-app.html">
+		<img  width="90%"src="readme/plugins/reveal/img/app/slide2.png">
+	</a>
+</p>
 
 ## Users
 
@@ -9,10 +15,10 @@ It is built using the PyQt platform and Pyqtgraph a graphics tool for 2D/3D (Ope
 The application is available on the Windows or MacOS platform and can be downloaded [here](https://github.com/StephenHinds/qt-anser/releases).
 
 #### Manual
-A quickstart guide for the Anser EMT system and application is also available [here](Anser_Manual.pdf) .
+A quickstart guide for the Application and Anser EMT system is also available [here](Anser_Manual.pdf).
 
 #### Drivers
-The application requires the latest version of NI DAQmx (available for [Windows](http://www.ni.com/download/ni-daqmx-17.6/7169/en/), [MacOS](http://www.ni.com/download/ni-daqmx-base-15.0/5648/en/)). Please refer to the user manual for installation.
+The application requires the latest version of **NI DAQmx** (available for [Windows](http://www.ni.com/download/ni-daqmx-17.6/7169/en/) and [MacOS](http://www.ni.com/download/ni-daqmx-base-15.0/5648/en/)). Please refer to the user manual for installation.
 
 
 ## Developers
@@ -33,14 +39,14 @@ PyQt5, QDarkStyle, scipy, numpy, numpy-stl, pyqtgraph, pyserial, ruamel.yaml, Py
 
 
 <p align="center">
-    <img  width="70%"src="readme/build_setup.png">
+    <img  width="70%"src="readme/img/build_setup.png">
 </p>
 
 
 
-- Also, in order to include the **python-anser** submodule in your project: in your project tree,
-	right click on qt-anser folder and click mark directory as ‘Sources Root’
-	right click on python-anser folder and mark directory as ‘Sources Root’
+- In order to include the **python-anser** submodule in your project: in your project tree,
+    + right click on 'qt-anser' folder and click mark directory as ‘Sources Root’.
+    + right click on 'python-anser' folder and click mark directory as ‘Sources Root’.
 
 
 #### Creating an executable (.exe)
@@ -49,7 +55,7 @@ Application packaging freezes or packages the program into a standalone executab
 **PyInstaller** can be used for this purpose. The `app.spec` file contains the list of instructions to package the application. Your setup should be as follows:
 
 <p align="center">
-	<img  width="70%"src="readme/pyinstaller_setup.png">
+	<img  width="70%"src="readme/img/pyinstaller_setup.png">
 </p>
 
 
