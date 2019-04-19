@@ -1,11 +1,11 @@
 # Qt-Anser
 
-**Qt-Anser** is the graphical user interface (GUI) for the open-source [Anser](https://github.com/StephenHinds/AnserEMT-Homepage/) electromagnetic tracking system based on the [python-anser](https://github.com/AlexJaeger/python-anser) library.
+**Qt-Anser** is the graphical user interface (GUI) for the open-source [Anser](https://github.com/AnserEMT/Homepage-Anser.git) electromagnetic tracking system based on the [python-anser](https://github.com/AnserEMT/Python-Anser.git) library.
 It is built using the PyQt platform and Pyqtgraph, a graphics tool for 2D/3D (OpenGL) visualisation.
 
 <p align="center">
-	<a class="image" href="readme/plugins/reveal/slide-app.html">
-		<img  width="90%"src="readme/plugins/reveal/img/app/slide2.png">
+	<a class="image" href="https://anseremt.github.io/Qt-Anser/readme/plugins/reveal/slide-app.html">
+		<img  width="90%"src="docs/readme/plugins/reveal/img/app/slide2.png">
 	</a>
 </p>
 
@@ -34,12 +34,12 @@ The documentation for Qt-Anser is available [here]().
 - Setup your **Anaconda Environment** and ensure **Python version** is 3.6.5
 - The following packages can be installed using the **pip package manager**:
 PyQt5, QDarkStyle, scipy, numpy, numpy-stl, pyqtgraph, pyserial, ruamel.yaml, PyOpenGL, PyDAQmx, pyIGTLink, rx.
-
+- Clone the github repository by typing the following command: `git clone --recursive https://github.com/AnserEMT/Qt-Anser.git`
 - To build and run the application install **PyCharm**. Your setup should be as follows:
 
 
 <p align="center">
-    <img  width="70%"src="readme/img/build_setup.png">
+    <img  width="70%"src="docs/readme/img/build_setup.png">
 </p>
 
 
@@ -55,7 +55,7 @@ Application packaging freezes or packages the program into a standalone executab
 **PyInstaller** can be used for this purpose. The `app.spec` file contains the list of instructions to package the application. Your setup should be as follows:
 
 <p align="center">
-	<img  width="70%"src="readme/img/pyinstaller_setup.png">
+	<img  width="70%"src="docs/readme/img/pyinstaller_setup.png">
 </p>
 
 

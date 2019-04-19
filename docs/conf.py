@@ -21,7 +21,7 @@
 
 project = 'Qt-Anser'
 copyright = '2018, Alexander Jaeger, Stephen Hinds, Kilian O Donoghue, Padraig Cantillon-Murphy'
-author = 'Alexander Jaeger, Stephen Hinds, Kilian O Donoghue, Padraig Cantillon-Murphy'
+author = 'H. Jaeger, S. Hinds, K.O. Donoghue, P. Cantillon-Murphy'
 
 # The short X.Y version
 version = '0.1'
@@ -38,12 +38,7 @@ from autoapi.extension import *
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath('../'))
-print(os.path.abspath('../'))
-try:
-    sys.path.index(os.path.abspath('../python-anser/'))
-except ValueError:
-    sys.path.append(os.path.abspath('../python-anser/'))
-
+sys.path.insert(0, os.path.abspath('../Python-Anser/'))
 
 
 # -- General configuration ---------------------------------------------------
@@ -76,6 +71,8 @@ viewcode_import = True
 
 autoclass_content = 'both'
 autosummary_generate = True
+autosummary_mock_imports = ['PyDAQmx']
+autodoc_mock_imports = ['PyDAQmx']
 
 def autodoc_skip_member(app, what, name, obj, skip, options):
     exclusions = ('__weakref__',  # special-members
@@ -106,7 +103,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'readme']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -179,7 +176,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Qt-Anser.tex', 'Qt-Anser Documentation',
-     'Alexander Jaeger, Stephen Hinds, Kilian O Donoghue, Padraig Cantillon-Murphy', 'manual'),
+     'H. Jaeger, S. Hinds, K.O. Donoghue, P. Cantillon-Murphy', 'manual'),
 ]
 
 
@@ -208,7 +205,7 @@ source_parsers = {
    '.md': 'recommonmark.parser.CommonMarkParser',
 }
 
-github_doc_root = 'https://github.com/StephenHinds/qt-anser'
+github_doc_root = 'https://github.com/AnserEMT/Qt-Anser.git'
 
 # app setup hook
 def setup(app):
