@@ -1,4 +1,3 @@
-[submodule "python-anser"]
-	path = python-anser
-	url = https://github.com/AlexJaeger/python-anser.git
-	branch = qt
+[submodule "Python-Anser"]
+	path = Python-Anser
+	url = https://github.com/AnserEMT/Python-Anser.git
