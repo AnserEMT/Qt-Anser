@@ -26,7 +26,7 @@ The application requires the latest version of **NI DAQmx** (available for [Wind
 
 #### Documentation
 
-The documentation for Qt-Anser is available [here]().
+The documentation for Qt-Anser is available [here](https://qt-anser.readthedocs.io/en/master/).
 
 #### Build Instructions
 
