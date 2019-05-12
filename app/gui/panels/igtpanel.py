@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from app.gui.QtUI.igtwidget import Ui_igtwidget
 import app.utilities.guiutils as guiutils
-
+import utils.utils as utils
 
 class IGTPanel(QWidget, Ui_igtwidget):
     """
@@ -22,12 +22,25 @@ class IGTPanel(QWidget, Ui_igtwidget):
         # Instantiates the IGTPanel UI (Qt Designer UI file)
         self.setupUi(self)
         self.setStatus(False)
+        self.tracking_volume = []
+
         # Creates an openIGTLink connection
         self.apply_button.clicked.connect(lambda: self.UI_REQUEST_CREATE_SERVER.emit(self.port.text(),
                                                                                      self.localhost.isChecked()))
 
         # reset sensor positions (as solver can get stuck )
         self.reset_position_button.clicked.connect(lambda: self.UI_REQUEST_RESET_POSITION.emit())
+
+    @pyqtSlot(object)
+    def setIGTInfo(self, system):
+        """ Populates IGT panel using system object
+
+        :param system: system object
+        """
+        self.tracking_volume = system.tracking_volume
+        self.volume_label.setText(str('{}  x  {}  x  {} ').format(
+            int(self.tracking_volume[0]), int(self.tracking_volume[1]), int(self.tracking_volume[2])))
+        self.populateCombo(system)
 
     def setIncomingBrowser(self, message):
         """ Displays the given message in the side panel. Used for displaying incoming OpenIGTLink messages.
@@ -64,3 +77,15 @@ class IGTPanel(QWidget, Ui_igtwidget):
         self.x_label.setText(str(round(positions[index][0],2)))
         self.y_label.setText(str(round(positions[index][1],2)))
         self.z_label.setText(str(round(positions[index][2],2)))
+
+        bounds = utils.is_position_in_tracking_volume(positions[index], self.tracking_volume)
+        self.bounds_label.setText("IN") if bounds is True else self.bounds_label.setText("OUT")
+
+    @pyqtSlot(bool)
+    def resetPanel(self):
+        """ Resets the IGT Panel and LEDs"""
+        self.incoming_browser.clear()
+        self.sensor_combo.clear()
+        self.x_label.setText('0')
+        self.y_label.setText('0')
+        self.z_label.setText('0')

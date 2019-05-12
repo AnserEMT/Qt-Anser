@@ -33,6 +33,8 @@ class QtAnser(QObject):
 
     SYS_EVENT_SYSTEM_STATUS = pyqtSignal(bool)
     SYS_EVENT_SYSTEM_STATUS_NOTIFICATION = pyqtSignal(object)
+    SYS_EVENT_SENSOR_STATUS_NOTIFICATION = pyqtSignal(object)
+
 
     SYS_EVENT_SERVER_STATUS = pyqtSignal(bool)
     SYS_EVENT_SENSORS_CHANGED = pyqtSignal(list)
@@ -107,7 +109,7 @@ class QtAnser(QObject):
                     self.anser.sensors = selectedSensors
                     self.anser.start_acquisition()
                     # system object so we can populate views
-                    System_Template = namedtuple('System', ['freq', 'coils', 'sampling_freq', 'num_samples', 'active_ports', 'active_channels', 'sensors'])
+                    System_Template = namedtuple('System', ['freq', 'coils', 'sampling_freq', 'num_samples', 'active_ports', 'active_channels', 'sensors', 'tracking_volume'])
                     system = System_Template(
                         freq=[freq / 1000 for freq in self.anser.filter.transFreqs],
                         coils=[True]*8,
@@ -115,7 +117,8 @@ class QtAnser(QObject):
                         num_samples=self.anser.filter.numSamples,
                         active_ports=selectedPorts,
                         active_channels = self.anser.active_channels,
-                        sensors=self.anser.sensors)
+                        sensors=self.anser.sensors,
+                        tracking_volume=self.anser.tracking_volume)
 
                     qtScheduler = QtScheduler(QtCore)
                     newScheduler = NewThreadScheduler()
@@ -126,6 +129,8 @@ class QtAnser(QObject):
                         .subscribe(on_next=self.systemMonitor.run_system_test))
                     self.subscriptions.append(self.systemMonitor.systemNotifications.subscribe_on(scheduler=qtScheduler)\
                         .subscribe(on_next=self.SYS_EVENT_SYSTEM_STATUS_NOTIFICATION.emit))
+                    self.subscriptions.append(self.systemMonitor.sensorNotifications.subscribe_on(scheduler=qtScheduler)\
+                        .subscribe(on_next=self.SYS_EVENT_SENSOR_STATUS_NOTIFICATION.emit))
                     self.anser.start()
                     self.systemStatus = True
                     self.SYS_EVENT_SYSTEM_STATUS.emit(self.systemStatus)

@@ -7,6 +7,7 @@ import logging
 from app.gui.widgets.loggerwidget import LoggerWidget
 from app.gui.widgets.tabwidget import TabWidget
 import app.utilities.guiutils as guiutils
+from monitor.monitor import SystemStatusNotification, SensorStatusNotification
 
 
 class MainWindow(QMainWindow):
@@ -110,10 +111,13 @@ class MainWindow(QMainWindow):
 
         :param notification: a notification which bundles EMT coil and system activity e.g system status code and message, coils status
         """
-        self.setStatusbarSystemLEDByID(notification.status)
-        self.setStatusbarMessage(notification.message)
-        self.systemPanel.setCoilLEDsByID(notification.coils)
-        # print('notification' + str(time.time()))
+        if type(notification) is SystemStatusNotification:
+            self.setStatusbarSystemLEDByID(notification.status)
+            self.setStatusbarMessage(notification.message)
+            self.systemPanel.setCoilLEDsByID(notification.coils)
+
+        if type(notification) is SensorStatusNotification:
+            self.systemPanel.setPortLEDsByID(notification.sensor_status)
 
     @pyqtSlot(str)
     def changeDefaultConfig(self, file):

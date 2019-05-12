@@ -38,6 +38,7 @@ solver:
   verbosity: 0
   xtol: 1e-06
 system:
+  tracking_volume: [300, 300, 300]
   channels: []
   primary_channels: [1, 3, 5, 7]
   device_cal: 7x7

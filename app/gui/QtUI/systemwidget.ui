@@ -1,609 +1,243 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>systemwidget</class>
- <widget class="QWidget" name="systemwidget">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>500</width>
-    <height>790</height>
-   </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>500</width>
-    <height>0</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>900</width>
-    <height>16777215</height>
-   </size>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="label_14">
-     <property name="text">
-      <string>System Status</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>Transmitter Parameters</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <property name="leftMargin">
-       <number>20</number>
-      </property>
-      <property name="topMargin">
-       <number>20</number>
-      </property>
-      <property name="rightMargin">
-       <number>20</number>
-      </property>
-      <property name="bottomMargin">
-       <number>20</number>
-      </property>
-      <item>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_1">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_3">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="8" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_8f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_3f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="7" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_7f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_19">
-          <property name="text">
-           <string>Coils Frequency (kHz):</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_9">
-          <property name="text">
-           <string>8</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_2f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>3</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_5f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_7">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_5">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="6" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_6">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>2</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_4f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="6" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_6f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_8">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Coils:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_7">
-          <property name="text">
-           <string>6</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_10">
-          <property name="text">
-           <string>Coils Active:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_4">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_1f">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>5</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>4</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="coil_2">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_8">
-          <property name="text">
-           <string>7</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>Sensor Parameters</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <property name="leftMargin">
-       <number>20</number>
-      </property>
-      <property name="topMargin">
-       <number>20</number>
-      </property>
-      <property name="rightMargin">
-       <number>20</number>
-      </property>
-      <property name="bottomMargin">
-       <number>20</number>
-      </property>
-      <item>
-       <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_28">
-          <property name="text">
-           <string>Sampling Frequency (kHz):</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_30">
-          <property name="text">
-           <string>Sample Size:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="refresh_rate">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_32">
-          <property name="text">
-           <string>Active Ports:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLabel" name="active_ports">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="sampling_frequency">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="label_15">
-     <property name="text">
-      <string>Tracking</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <property name="leftMargin">
-       <number>20</number>
-      </property>
-      <property name="topMargin">
-       <number>20</number>
-      </property>
-      <property name="rightMargin">
-       <number>20</number>
-      </property>
-      <property name="bottomMargin">
-       <number>20</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label_34">
-          <property name="text">
-           <string>System Speed:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_36">
-          <property name="text">
-           <string>Slow:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSlider" name="slider">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>4</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBothSides</enum>
-          </property>
-          <property name="tickInterval">
-           <number>1</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_35">
-          <property name="text">
-           <string>Fast</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_43">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_41">
-          <property name="text">
-           <string>Port:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_42">
-          <property name="text">
-           <string>Sensor:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QCheckBox" name="checkbox_1">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QComboBox" name="combo_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <item>
-           <property name="text">
-            <string>yrdy</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="0" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_37">
-          <property name="text">
-           <string>1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_11">
-          <property name="text">
-           <string>2</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_12">
-          <property name="text">
-           <string>3</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_13">
-          <property name="text">
-           <string>4</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QComboBox" name="combo_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QComboBox" name="combo_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QComboBox" name="combo_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2" alignment="Qt::AlignHCenter">
-         <widget class="QCheckBox" name="checkbox_2">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3" alignment="Qt::AlignHCenter">
-         <widget class="QCheckBox" name="checkbox_3">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4" alignment="Qt::AlignHCenter">
-         <widget class="QCheckBox" name="checkbox_4">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item alignment="Qt::AlignHCenter">
-       <widget class="QPushButton" name="apply_button">
-        <property name="text">
-         <string>Start</string>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-  </layout>
- </widget>
- <resources/>
- <connections/>
-</ui>
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'igtwidget.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.3
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_igtwidget(object):
+    def setupUi(self, igtwidget):
+        igtwidget.setObjectName("igtwidget")
+        igtwidget.resize(500, 845)
+        igtwidget.setMinimumSize(QtCore.QSize(500, 0))
+        igtwidget.setMaximumSize(QtCore.QSize(900, 16777215))
+        self.verticalLayout = QtWidgets.QVBoxLayout(igtwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
+        self.label_14 = QtWidgets.QLabel(igtwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_14.sizePolicy().hasHeightForWidth())
+        self.label_14.setSizePolicy(sizePolicy)
+        self.label_14.setObjectName("label_14")
+        self.verticalLayout.addWidget(self.label_14)
+        self.line = QtWidgets.QFrame(igtwidget)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.verticalLayout.addWidget(self.line)
+        self.groupBox_2 = QtWidgets.QGroupBox(igtwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
+        self.groupBox_2.setSizePolicy(sizePolicy)
+        self.groupBox_2.setTitle("")
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_4.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.FieldsStayAtSizeHint)
+        self.formLayout.setObjectName("formLayout")
+        self.label_28 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_28.setObjectName("label_28")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_28)
+        self.status = QtWidgets.QLabel(self.groupBox_2)
+        self.status.setObjectName("status")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.status)
+        self.label_30 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_30.setObjectName("label_30")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_30)
+        self.port = QtWidgets.QLineEdit(self.groupBox_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.port.sizePolicy().hasHeightForWidth())
+        self.port.setSizePolicy(sizePolicy)
+        self.port.setObjectName("port")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.port)
+        self.label_32 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_32.setObjectName("label_32")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_32)
+        self.localhost = QtWidgets.QCheckBox(self.groupBox_2)
+        self.localhost.setText("")
+        self.localhost.setObjectName("localhost")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.localhost)
+        self.label = QtWidgets.QLabel(self.groupBox_2)
+        self.label.setObjectName("label")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.incoming_browser = QtWidgets.QTextBrowser(self.groupBox_2)
+        self.incoming_browser.setObjectName("incoming_browser")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.incoming_browser)
+        self.label_3 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.label_3)
+        self.verticalLayout_4.addLayout(self.formLayout)
+        self.apply_button = QtWidgets.QPushButton(self.groupBox_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.apply_button.sizePolicy().hasHeightForWidth())
+        self.apply_button.setSizePolicy(sizePolicy)
+        self.apply_button.setAutoFillBackground(False)
+        self.apply_button.setObjectName("apply_button")
+        self.verticalLayout_4.addWidget(self.apply_button, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.groupBox_2)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem1)
+        self.label_7 = QtWidgets.QLabel(igtwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
+        self.label_7.setSizePolicy(sizePolicy)
+        self.label_7.setObjectName("label_7")
+        self.verticalLayout.addWidget(self.label_7)
+        self.line_2 = QtWidgets.QFrame(igtwidget)
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.verticalLayout.addWidget(self.line_2)
+        self.groupBox = QtWidgets.QGroupBox(igtwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
+        self.groupBox.setSizePolicy(sizePolicy)
+        self.groupBox.setTitle("")
+        self.groupBox.setObjectName("groupBox")
+        self.gridLayout = QtWidgets.QGridLayout(self.groupBox)
+        self.gridLayout.setContentsMargins(20, 20, 20, 20)
+        self.gridLayout.setObjectName("gridLayout")
+        self.formLayout_3 = QtWidgets.QFormLayout()
+        self.formLayout_3.setFieldGrowthPolicy(QtWidgets.QFormLayout.FieldsStayAtSizeHint)
+        self.formLayout_3.setContentsMargins(0, -1, 0, -1)
+        self.formLayout_3.setObjectName("formLayout_3")
+        self.label_9 = QtWidgets.QLabel(self.groupBox)
+        self.label_9.setObjectName("label_9")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_9)
+        self.sensor_combo = QtWidgets.QComboBox(self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sensor_combo.sizePolicy().hasHeightForWidth())
+        self.sensor_combo.setSizePolicy(sizePolicy)
+        self.sensor_combo.setObjectName("sensor_combo")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.sensor_combo)
+        self.label_11 = QtWidgets.QLabel(self.groupBox)
+        self.label_11.setObjectName("label_11")
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_11)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(0, 6, 10, 10)
+        self.horizontalLayout.setSpacing(6)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_8 = QtWidgets.QLabel(self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
+        self.label_8.setObjectName("label_8")
+        self.horizontalLayout.addWidget(self.label_8)
+        self.x_label = QtWidgets.QLabel(self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.x_label.sizePolicy().hasHeightForWidth())
+        self.x_label.setSizePolicy(sizePolicy)
+        self.x_label.setObjectName("x_label")
+        self.horizontalLayout.addWidget(self.x_label)
+        self.label_6 = QtWidgets.QLabel(self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_6.sizePolicy().hasHeightForWidth())
+        self.label_6.setSizePolicy(sizePolicy)
+        self.label_6.setObjectName("label_6")
+        self.horizontalLayout.addWidget(self.label_6)
+        self.y_label = QtWidgets.QLabel(self.groupBox)
+        self.y_label.setObjectName("y_label")
+        self.horizontalLayout.addWidget(self.y_label)
+        self.label_4 = QtWidgets.QLabel(self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy)
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout.addWidget(self.label_4)
+        self.z_label = QtWidgets.QLabel(self.groupBox)
+        self.z_label.setObjectName("z_label")
+        self.horizontalLayout.addWidget(self.z_label)
+        self.formLayout_3.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.label_5 = QtWidgets.QLabel(self.groupBox)
+        self.label_5.setObjectName("label_5")
+        self.formLayout_3.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setContentsMargins(0, 10, 0, 10)
+        self.horizontalLayout_4.setSpacing(6)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.bounds_label = QtWidgets.QLabel(self.groupBox)
+        self.bounds_label.setObjectName("bounds_label")
+        self.horizontalLayout_4.addWidget(self.bounds_label)
+        self.formLayout_3.setLayout(3, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.label_2 = QtWidgets.QLabel(self.groupBox)
+        self.label_2.setObjectName("label_2")
+        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_2)
+        self.volume_label = QtWidgets.QLabel(self.groupBox)
+        self.volume_label.setObjectName("volume_label")
+        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.volume_label)
+        self.gridLayout.addLayout(self.formLayout_3, 1, 1, 1, 1)
+        self.reset_position_button = QtWidgets.QPushButton(self.groupBox)
+        self.reset_position_button.setObjectName("reset_position_button")
+        self.gridLayout.addWidget(self.reset_position_button, 2, 1, 1, 1, QtCore.Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.groupBox)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem2)
+
+        self.retranslateUi(igtwidget)
+        QtCore.QMetaObject.connectSlotsByName(igtwidget)
+
+    def retranslateUi(self, igtwidget):
+        _translate = QtCore.QCoreApplication.translate
+        igtwidget.setWindowTitle(_translate("igtwidget", "Form"))
+        self.label_14.setText(_translate("igtwidget", "OpenIGTLink"))
+        self.label_28.setText(_translate("igtwidget", "Status:"))
+        self.status.setText(_translate("igtwidget", "OFF"))
+        self.label_30.setText(_translate("igtwidget", "Port:"))
+        self.port.setText(_translate("igtwidget", "18944"))
+        self.label_32.setText(_translate("igtwidget", "Localhost:"))
+        self.label.setText(_translate("igtwidget", "Incoming:"))
+        self.apply_button.setText(_translate("igtwidget", "Connect"))
+        self.label_7.setText(_translate("igtwidget", "Sensor Positions"))
+        self.label_9.setText(_translate("igtwidget", "Sensor:"))
+        self.label_11.setText(_translate("igtwidget", "Coordinates (mm):"))
+        self.label_8.setText(_translate("igtwidget", "x:"))
+        self.x_label.setText(_translate("igtwidget", "0"))
+        self.label_6.setText(_translate("igtwidget", "y:"))
+        self.y_label.setText(_translate("igtwidget", "0"))
+        self.label_4.setText(_translate("igtwidget", "z:"))
+        self.z_label.setText(_translate("igtwidget", "0"))
+        self.label_5.setText(_translate("igtwidget", "Sensor Bounds:"))
+        self.bounds_label.setText(_translate("igtwidget", "None"))
+        self.label_2.setText(_translate("igtwidget", "Tracking Volume (mm):"))
+        self.volume_label.setText(_translate("igtwidget", "0  x  0  x  0"))
+        self.reset_position_button.setText(_translate("igtwidget", "Reset Position"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    igtwidget = QtWidgets.QWidget()
+    ui = Ui_igtwidget()
+    ui.setupUi(igtwidget)
+    igtwidget.show()
+    sys.exit(app.exec_())
+

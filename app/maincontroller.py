@@ -34,16 +34,17 @@ class MainController(QObject):
         # (QtSignal) System Event: Starting Tracking Mode
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.systemPanel.setSystemInfo)
         self.system.SYS_EVENT_MODE_TRACKING.connect(self.fftGraph.populateCombo)
-        self.system.SYS_EVENT_MODE_TRACKING.connect(self.igtPanel.populateCombo)
+        self.system.SYS_EVENT_MODE_TRACKING.connect(self.igtPanel.setIGTInfo)
 
         # (QtSignal) System Event: EMT System Status
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.view.setStatusbarSystemLED)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.systemPanel.setAllCoilLEDs)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.fftGraph.clearGraph)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.positionGraph.clearGraph)
-        self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.igtPanel.incoming_browser.clear)
+        self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.igtPanel.resetPanel)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.calibrationPanel.setCalibrationComplete)
         self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.gridGraph.resetGraph)
+        self.system.SYS_EVENT_SYSTEM_STATUS.connect(self.systemPanel.resetLEDs)
 
         # (QtSignal) System Event: OpenIGTLink Status
         self.system.SYS_EVENT_SERVER_STATUS.connect(self.igtPanel.setStatus)
@@ -63,8 +64,9 @@ class MainController(QObject):
         # (QtSignal) System Event: Incoming OpenIGTLink Message received
         self.system.SYS_EVENT_NETWORK_MSG_RECEIVED.connect(self.igtPanel.setIncomingBrowser)
 
-        # (QtSignal) System Event: EMT System Monitor Notification
+        # (QtSignal) System Event: EMT System Monitor Notification s
         self.system.SYS_EVENT_SYSTEM_STATUS_NOTIFICATION.connect(self.view.notificationHanlder)
+        self.system.SYS_EVENT_SENSOR_STATUS_NOTIFICATION.connect(self.view.notificationHanlder)
 
         # (QtSignal) System Event: Calibration Events
         self.system.SYS_EVENT_MODE_CALIBRATION.connect(self.calibrationPanel.setReadyToCapture)

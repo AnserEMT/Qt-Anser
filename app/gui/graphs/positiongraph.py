@@ -35,7 +35,7 @@ class PositionGraph(gl.GLViewWidget):
         for i in range(MAX_NUM_OF_SENSORS):
             self.pos[i] = (0, 0, 0)
             self.color[i] = (0, 0.0, 0.0, 0.0)
-            size[i] = 6
+            size[i] = 8
         # create the 3D visualisation graph
         self.sp1 = gl.GLScatterPlotItem(pos=self.pos, size=size, color=self.color[0], pxMode=True)
         self.sp1.setGLOptions('translucent')

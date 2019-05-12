@@ -41,13 +41,19 @@ class SystemPanel(QWidget, Ui_systemwidget):
         self.coilLEDs.extend([self.coil_1, self.coil_2, self.coil_3, self.coil_4,
                               self.coil_5, self.coil_6, self.coil_7, self.coil_8])
 
-        # Initially set LED status to OFF for each fo the transmitter coils
+        # Initially set LED status to OFF for each of the transmitter coils
         self.setCoilLEDs([False] * 8)
 
         # Each combobox represents a port (1-4).
         # Each combobox contains all the calibrated sensors on that port.
         self.combos = [self.combo_1, self.combo_2, self.combo_3, self.combo_4]
 
+        # Status LEDs for each sensor-port connection
+        self.portLEDs = []
+        self.portLEDs.extend([self.connect_s1, self.connect_s2, self.connect_s3, self.connect_s4])
+
+        # Initially set LED status to OFF for each of the sensor-to-port connections
+        self.setPortLEDs([False] * 4)
 
     @pyqtSlot(object)
     def setSystemInfo(self, system):
@@ -64,7 +70,6 @@ class SystemPanel(QWidget, Ui_systemwidget):
             self.coilFreqLabels[index].setText(str(freq))
         self.setCoilLEDs(system.coils)
 
-
     @pyqtSlot(bool)
     def setAllCoilLEDs(self, status):
         """ Sets the LED status for each of the transmitter coils.
@@ -75,7 +80,6 @@ class SystemPanel(QWidget, Ui_systemwidget):
             LED.setPixmap(guiutils.get_status_pixmap(status))
             LED.setProperty('status', status)
 
-
     def setCoilLED(self, coilNr, status):
         """ Sets the LED status for a single transmitter coil.
 
@@ -85,7 +89,6 @@ class SystemPanel(QWidget, Ui_systemwidget):
         if status != self.coilLEDs[coilNr - 1].property('status'):
             self.coilLEDs[coilNr - 1].setPixmap(guiutils.get_status_pixmap(status))
 
-
     def setCoilLEDs(self, statusList):
         """ Sets the LED status for each of the transmitter coils using a boolean list.
 
@@ -94,12 +97,31 @@ class SystemPanel(QWidget, Ui_systemwidget):
         for index, LED in enumerate(self.coilLEDs):
             LED.setPixmap(guiutils.get_status_pixmap(statusList[index]))
 
-
     def setCoilLEDsByID(self, statusIDList):
-        """ Sets the LED status for each of the transmitter coils using a boolean dictionary."""
+        """  Sets the LED status for each of the transmitter coils using a statusID list
+
+        :param statusIDList: statusID list describing the status of all coils (1-8)
+        """
         for index, (statusID, LED) in enumerate(zip(statusIDList, self.coilLEDs)):
             LED.setPixmap(guiutils.get_status_pixmap_by_ID(statusID))
 
+    @pyqtSlot(object)
+    def setPortLEDsByID(self, statusIDList):
+        """ Sets the LED status for each of the sensors-to-ports connection using a statusID list
+
+        :param statusList: a statusID list describing the status of all sensors-to-port connections (1-4)
+        """
+        for index, LED in enumerate(self.portLEDs):
+            LED.setPixmap(guiutils.get_status_pixmap_by_ID(statusIDList[index]))
+
+    @pyqtSlot(list)
+    def setPortLEDs(self, statusList):
+        """ Sets the LED status for each of the sensors-to-ports connection using a boolean list.
+
+        :param statusList: list of booleans describing the status of all sensors-to-port connections (1-4)
+        """
+        for index, LED in enumerate(self.portLEDs):
+            LED.setPixmap(guiutils.get_status_pixmap(statusList[index]))
 
     @pyqtSlot(list)
     def populateCombos(self, sensors):
@@ -113,3 +135,11 @@ class SystemPanel(QWidget, Ui_systemwidget):
             for comboNo, combo in enumerate(self.combos):
                 if comboNo+1 in sensor.ports:
                     combo.addItem(sensor.name, sensor.name)
+
+    @pyqtSlot(bool)
+    def resetLEDs(self, status):
+        if status is False:
+            self.setPortLEDs([False] * 4)
+            self.setCoilLEDs([False] * 8)
+
+
