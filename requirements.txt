@@ -7,3 +7,6 @@ qdarkstyle==2.7
 pyqt3d==5.13.0
 ruamel.yaml==0.16.5
 pyserial==3.4
+pydaqmx
+scipy
+numpy
