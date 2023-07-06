@@ -6,7 +6,7 @@ sphinx-markdown-tables==0.0.9
 sphinx_rtd_theme==0.4.3
 numpy==1.16.2
 numpy-stl==2.10.1
-scipy==1.2.1
+scipy==1.10.0
 pyserial==3.4
 ruamel.yaml==0.15.92
 rx==1.6.1
